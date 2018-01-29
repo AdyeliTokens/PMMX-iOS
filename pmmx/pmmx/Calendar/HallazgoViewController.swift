@@ -63,4 +63,17 @@ class HallazgoViewController: UIViewController {
         revealViewController.pushFrontViewController(frontViewController, animated: true)
     }
     
+    @IBAction func backButton(_ sender: UIButton) {
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "NTRMVC") as! NTRMVC
+        desController.IdCategoria = self.IdCategoria
+        desController.IdEvento = self.IdEvento
+        desController.Title = self.Title
+        desController.idGrupo = self.idGrupo
+        desController.IdSubCategoria = self.IdSubCategoria
+        
+        let frontViewController = UINavigationController.init(rootViewController: desController)
+        revealViewController().pushFrontViewController(frontViewController, animated: true)
+    }
+    
 }

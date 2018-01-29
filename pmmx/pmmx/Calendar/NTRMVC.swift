@@ -49,12 +49,12 @@ class NTRMVC: UIViewController {
     }
     
     @IBAction func cartonButton(_ sender: UIButton) {
-        self.Title = "Carton"
+        self.Title = "Cartón"
         self.nextController()
     }
     
     @IBAction func organicoButton(_ sender: UIButton) {
-        self.Title = "Organico"
+        self.Title = "Orgánico"
         self.nextController()
     }
     
@@ -63,6 +63,17 @@ class NTRMVC: UIViewController {
         self.nextController()
     }
     
-    
+    @IBAction func backButton(_ sender: UIButton) {
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "CollectionVC") as! CollectionViewController
+        desController.IdCategoria = self.IdCategoria
+        desController.IdEvento = self.IdEvento
+        desController.Title = self.Title
+        desController.idGrupo = self.idGrupo
+        desController.IdSubCategoria = self.IdSubCategoria
+        
+        let frontViewController = UINavigationController.init(rootViewController: desController)
+        revealViewController().pushFrontViewController(frontViewController, animated: true)
+    }
 
 }

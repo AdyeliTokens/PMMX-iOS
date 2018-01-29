@@ -747,6 +747,14 @@
                                     <action selector="organicoButton:" destination="9w4-oM-Pcj" eventType="touchUpInside" id="idz-gK-5Od"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Np0-HD-tBU">
+                                <rect key="frame" x="57" y="947" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="9w4-oM-Pcj" eventType="touchUpInside" id="XHh-XK-n71"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="92D-kc-o3g"/>
@@ -819,6 +827,14 @@
                                 </state>
                                 <connections>
                                     <action selector="productoFinal:" destination="erG-ys-e9O" eventType="touchUpInside" id="pRm-AJ-IBx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNf-BP-VTH">
+                                <rect key="frame" x="63" y="945" width="110" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="erG-ys-e9O" eventType="touchUpInside" id="lxC-ai-XiW"/>
                                 </connections>
                             </button>
                         </subviews>
