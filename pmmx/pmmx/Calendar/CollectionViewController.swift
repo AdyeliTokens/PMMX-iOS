@@ -115,7 +115,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
         switch kind {
         case UICollectionElementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "customHeader", for: indexPath) as! CustomHeaderView
-            headerView.headerLabel.text = "Titulo"
+            headerView.headerLabel.text = ""
             return headerView
         default:
             assert(false, "Unexpected element kind")
@@ -141,7 +141,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
             switch(IdCategoria)
             {
                 case 7:
-                   if(idGrupo != 25)
+                   if(idGrupo != 13)
                     {
                         justDoIt();
                     }
@@ -158,7 +158,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
     
     func ntrmController()
     {
-        if(idGrupo == 25)
+        if(idGrupo == 13)
         {
             let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let desController = mainStoryBoard.instantiateViewController(withIdentifier: "NTRMVC") as! NTRMVC

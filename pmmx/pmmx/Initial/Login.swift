@@ -116,6 +116,10 @@ class Login: UIViewController, UITextViewDelegate {
                                         break
                                     default:
                                         print("Default")
+                                        if self.defaults.string(forKey: "UserName") != nil
+                                        {
+                                            self.nextController()
+                                        }
                                         break
                                 }
                             }

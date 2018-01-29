@@ -223,6 +223,23 @@ class PhotoVC: UIViewController , UINavigationControllerDelegate, UIImagePickerC
     
     
     @IBAction func qrLector(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Do yo want", message: "to scan a QR or open a List?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let OKAction = UIAlertAction(title: "QR", style: .default) { (action:UIAlertAction!) in
+            self.openQR(sender)
+        }
+        alert.addAction(OKAction)
+        
+        let cancelAction = UIAlertAction(title: "Open a List", style: .cancel) { (action:UIAlertAction!) in
+            self.openLibrary()
+        }
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func openQR(_ sender: UIButton)
+    {
         let savingsInformationViewController = storyboard?.instantiateViewController(withIdentifier: "qrVC") as! QRViewController
         
         savingsInformationViewController.delegate = self

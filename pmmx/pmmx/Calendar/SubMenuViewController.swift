@@ -109,17 +109,17 @@ class SubMenuViewController: UIViewController,CircleMenuDelegate {
         var idGrupo : Int = 0
         switch  IdSubCategoria{
         case 8:// WPO
-            idGrupo = 21
+            idGrupo = 10
         case 9:// EHS
-            idGrupo = 22
+            idGrupo = 11
         case 11:// Limpieza
-            idGrupo = 23
+            idGrupo = 12
         case 12:// NTRM
-            idGrupo = 25
+            idGrupo = 13
         case 13:// QA
-            idGrupo = 26
+            idGrupo = 14
         case 14:// PI
-            idGrupo = 24
+            idGrupo = 15
         default:
             print(IdSubCategoria)
         }

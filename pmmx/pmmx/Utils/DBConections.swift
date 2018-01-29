@@ -266,7 +266,7 @@ class DBConections: UIViewController
             "Descripcion": Descripcion,
             "Prioridad": 1,
             "IdResponsable" : IdPersona,
-            "IdSubCategoria" : IdSubCategoria,
+            "IdSubCategoria" : 8,
             "IdTipo" : IdTipo
         ]
         
