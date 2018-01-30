@@ -108,6 +108,7 @@ class SubCategoria
     let Id: Int
     let IdCategoria : Int
     let IdResponsable : Int
+    let IdGrupo : Int
     let Nombre: String
     let NombreCorto: String
     let Activo: Bool
@@ -115,6 +116,7 @@ class SubCategoria
     init(dictionary: [String: Any]) {
         self.Id = (dictionary["Id"] as! Int)
         self.IdCategoria = (dictionary["IdCategoria"] as? Int)!
+        self.IdGrupo = (dictionary["IdGrupo"] as? Int)!
         self.IdResponsable = (dictionary["IdResponsable"] as? Int)!
         self.Nombre = (dictionary["Nombre"] as? String)!
         self.NombreCorto = (dictionary["NombreCorto"] as? String)!
@@ -349,14 +351,12 @@ class Origen
     var Id: Int?
     var IdModulo: Int?
     var IdWorkCenter: Int?
-    var ParosActivos: Int?
-    var DefectosActivos: Int?
+    var NombreOrigen: String?
     
     init(dictionary: [String: AnyObject]) {
         self.Id = (dictionary["Id"] as? Int)!
         self.IdModulo = (dictionary["IdModulo"] as? Int)!
         self.IdWorkCenter = (dictionary["IdWorkCenter"] as? Int)!
-        self.ParosActivos = (dictionary["ParosActivos"] as? Int)!
-        self.DefectosActivos = (dictionary["DefectosActivos"] as? Int)!
+        self.NombreOrigen = (dictionary["NombreOrigen"] as? String)!
     }
 }

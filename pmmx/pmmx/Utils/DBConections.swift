@@ -21,6 +21,7 @@ class DBConections: UIViewController
     var nsmutableArray: NSMutableArray = []
     var preguntasArray = [Pregunta]()
     var subCategoriaArray = [SubCategoria]()
+    var origenesArray = [Origen]()
     
     
     override func viewDidLoad() {
@@ -250,6 +251,21 @@ class DBConections: UIViewController
                     self.subCategoriaArray.sort(by: { $0.NombreCorto > $1.NombreCorto })
                 }
                 completion(self.subCategoriaArray)
+            }
+        }
+    }
+    
+    func getOrigenes(completion:@escaping (Array<Origen>) -> Void )
+    {
+        self.origenesArray.removeAll()
+        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Origen"
+        
+        Alamofire.request(URL_CONNECT).responseJSON{ response in
+            if let json = response.result.value as? [[String:AnyObject]] {
+                for obj in json {
+                    self.origenesArray.append(Origen(dictionary: obj))
+                }
+                completion(self.origenesArray)
             }
         }
     }

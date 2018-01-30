@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		87CA6459F4611D8F03FE29B3 /* Pods_pmmxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D848455F05097A0305713FF /* Pods_pmmxTests.framework */; };
+		9E18ABE4201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E18ABE3201F9A3E00969F8A /* SearchOrigenViewController.swift */; };
+		9E18ABE5201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E18ABE3201F9A3E00969F8A /* SearchOrigenViewController.swift */; };
+		9E18ABE6201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E18ABE3201F9A3E00969F8A /* SearchOrigenViewController.swift */; };
 		9E2AAB761FCE55030026D48F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2AAB751FCE55030026D48F /* SearchViewController.swift */; };
 		9E2AAB771FCE55030026D48F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2AAB751FCE55030026D48F /* SearchViewController.swift */; };
 		9E2AAB781FCE55030026D48F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2AAB751FCE55030026D48F /* SearchViewController.swift */; };
@@ -115,6 +118,7 @@
 		8163FC69FDE2DE444D54D986 /* Pods-pmmxTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pmmxTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pmmxTests/Pods-pmmxTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A7B95514B4CCAEFCE5A2DD6 /* Pods-pmmx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pmmx.release.xcconfig"; path = "Pods/Target Support Files/Pods-pmmx/Pods-pmmx.release.xcconfig"; sourceTree = "<group>"; };
 		914CAF89F1B94604C16F80A2 /* Pods-pmmxUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pmmxUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-pmmxUITests/Pods-pmmxUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9E18ABE3201F9A3E00969F8A /* SearchOrigenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchOrigenViewController.swift; sourceTree = "<group>"; };
 		9E2AAB751FCE55030026D48F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9E4291511FBA097E00995862 /* pmmx.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pmmx.entitlements; sourceTree = "<group>"; };
 		9E4291561FBBAF8400995862 /* Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
@@ -317,6 +321,7 @@
 				9E4291561FBBAF8400995862 /* Class.swift */,
 				9E42915E1FBBBDD700995862 /* DBConections.swift */,
 				9E2AAB751FCE55030026D48F /* SearchViewController.swift */,
+				9E18ABE3201F9A3E00969F8A /* SearchOrigenViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -670,6 +675,7 @@
 				9E622B221FB4FB48006143DA /* Login.swift in Sources */,
 				9EABF5891FCF839100A054E9 /* CircularSliderVC.swift in Sources */,
 				9EC41F041FCC75FF00E6E635 /* TabBarController.swift in Sources */,
+				9E18ABE4201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */,
 				9EC39BE02018E4080084D779 /* HallazgoViewController.swift in Sources */,
 				9E4291571FBBAF8400995862 /* Class.swift in Sources */,
 				9EA2C78E1FE8860400407BFA /* CustomCell.swift in Sources */,
@@ -704,6 +710,7 @@
 				9EB2825F1FDF00700032C435 /* SummaryViewController.swift in Sources */,
 				9EA2C78F1FE8860400407BFA /* CustomCell.swift in Sources */,
 				9EABF5871FCF838E00A054E9 /* CalendarVC.swift in Sources */,
+				9E18ABE5201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */,
 				9EC39BD9201802F60084D779 /* CustomHeaderView.swift in Sources */,
 				9E4291581FBBAF8400995862 /* Class.swift in Sources */,
 				9E2AAB771FCE55030026D48F /* SearchViewController.swift in Sources */,
@@ -732,6 +739,7 @@
 				9EB282601FDF00700032C435 /* SummaryViewController.swift in Sources */,
 				9EA2C7901FE8860400407BFA /* CustomCell.swift in Sources */,
 				9EABF5881FCF838E00A054E9 /* CalendarVC.swift in Sources */,
+				9E18ABE6201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */,
 				9EC39BDA201802F60084D779 /* CustomHeaderView.swift in Sources */,
 				9E4291591FBBAF8400995862 /* Class.swift in Sources */,
 				9E2AAB781FCE55030026D48F /* SearchViewController.swift in Sources */,
