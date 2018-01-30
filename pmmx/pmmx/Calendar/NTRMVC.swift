@@ -63,6 +63,11 @@ class NTRMVC: UIViewController {
         self.nextController()
     }
     
+    @IBAction func otrosButton(_ sender: UIButton) {
+        self.Title = "Otros"
+        self.nextController()
+    }
+    
     @IBAction func backButton(_ sender: UIButton) {
         let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let desController = mainStoryBoard.instantiateViewController(withIdentifier: "CollectionVC") as! CollectionViewController

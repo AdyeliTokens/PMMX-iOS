@@ -71,7 +71,7 @@ class SubMenuViewController: UIViewController,CircleMenuDelegate {
             frame: CGRect(x: UIScreen.main.bounds.size.width*0.4, y: UIScreen.main.bounds.size.height*0.3, width: 170, height: 170),
             normalIcon:"quality",
             selectedIcon:"icon_close",
-            buttonsCount: 6,
+            buttonsCount: self.subCategoriasArray.count,
             duration: 0.5,
             distance: 300)
         
@@ -101,42 +101,21 @@ class SubMenuViewController: UIViewController,CircleMenuDelegate {
         let btnsendtag: UIButton = sender
         let index = subCategoriasArray.index(where: {$0.Id == btnsendtag.tag})
         let hc = subCategoriasArray[index!]
-        self.nextController(IdSubCategoria: hc.Id, Nombre: hc.Nombre)
+        self.nextController(IdSubCategoria: hc.Id, Nombre: hc.Nombre, IdGrupo : hc.IdGrupo)
     }
     
-    func nextController(IdSubCategoria: Int, Nombre: String)
+    func nextController(IdSubCategoria: Int, Nombre: String, IdGrupo: Int)
     {
-        var idGrupo : Int = 0
-        switch  IdSubCategoria{
-        case 8:// WPO
-            idGrupo = 10
-        case 9:// EHS
-            idGrupo = 11
-        case 11:// Limpieza
-            idGrupo = 12
-        case 12:// NTRM
-            idGrupo = 13
-        case 13:// QA
-            idGrupo = 14
-        case 14:// PI
-            idGrupo = 15
-        default:
-            print(IdSubCategoria)
-        }
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "CollectionVC") as! CollectionViewController
+        desController.IdCategoria = self.IdCategoria
+        desController.IdEvento = self.IdEvento
+        desController.Title = Nombre
+        desController.idGrupo = IdGrupo
+        desController.IdSubCategoria = IdSubCategoria
         
-        if(idGrupo != 0)
-        {
-            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let desController = mainStoryBoard.instantiateViewController(withIdentifier: "CollectionVC") as! CollectionViewController
-            desController.IdCategoria = self.IdCategoria
-            desController.IdEvento = self.IdEvento
-            desController.Title = Nombre
-            desController.idGrupo = idGrupo
-            desController.IdSubCategoria = IdSubCategoria
-            
-            let frontViewController = UINavigationController.init(rootViewController: desController)
-            revealViewController().pushFrontViewController(frontViewController, animated: true)
-        }
+        let frontViewController = UINavigationController.init(rootViewController: desController)
+        revealViewController().pushFrontViewController(frontViewController, animated: true)
     }
     
     override func viewDidLayoutSubviews() {

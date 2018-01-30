@@ -137,55 +137,55 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
         if(direccion < 0)
         {
             self.addAnswer(respuesta: 0, comentario: "") // NO
-            
             switch(IdCategoria)
             {
                 case 7:
-                   if(idGrupo != 13)
-                    {
-                        justDoIt();
-                    }
+                   justDoIt();
                 default:
                     print(IdCategoria)
             }
         }
         else
         {
-          self.ntrmController()
           self.addAnswer(respuesta: 1, comentario: "") // SI
         }
     }
     
     func ntrmController()
     {
-        if(idGrupo == 13)
-        {
-            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let desController = mainStoryBoard.instantiateViewController(withIdentifier: "NTRMVC") as! NTRMVC
-            desController.IdCategoria = self.IdCategoria
-            desController.IdEvento = self.IdEvento
-            desController.Title = self.Title
-            desController.idGrupo = idGrupo
-            desController.IdSubCategoria = IdSubCategoria
-            
-            let frontViewController = UINavigationController.init(rootViewController: desController)
-            revealViewController().pushFrontViewController(frontViewController, animated: true)
-        }
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "NTRMVC") as! NTRMVC
+        desController.IdCategoria = self.IdCategoria
+        desController.IdEvento = self.IdEvento
+        desController.Title = self.Title
+        desController.idGrupo = idGrupo
+        desController.IdSubCategoria = IdSubCategoria
+        
+        let frontViewController = UINavigationController.init(rootViewController: desController)
+        revealViewController().pushFrontViewController(frontViewController, animated: true)
     }
     
     func justDoIt()
     {
-        let revealViewController : SWRevealViewController = self.revealViewController()
-        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "PhotoVC") as! PhotoVC
-            desController.IdEvento = self.IdEvento
-            desController.IdCategoria = self.IdCategoria
-            desController.Titulo = self.Title
-            desController.IdGrupo = self.idGrupo
-            desController.Tipo = self.tipo
         
-        let frontViewController = UINavigationController.init(rootViewController: desController)
-        revealViewController.pushFrontViewController(frontViewController, animated: true)
+        if(idGrupo == 13)
+        {
+            self.ntrmController()
+        }
+        else
+        {
+            let revealViewController : SWRevealViewController = self.revealViewController()
+            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let desController = mainStoryBoard.instantiateViewController(withIdentifier: "PhotoVC") as! PhotoVC
+                desController.IdEvento = self.IdEvento
+                desController.IdCategoria = self.IdCategoria
+                desController.Titulo = self.Title
+                desController.IdGrupo = self.idGrupo
+                desController.Tipo = self.tipo
+            
+            let frontViewController = UINavigationController.init(rootViewController: desController)
+            revealViewController.pushFrontViewController(frontViewController, animated: true)
+        }
     }
     
     func addAnswer(respuesta: Int, comentario: String)
