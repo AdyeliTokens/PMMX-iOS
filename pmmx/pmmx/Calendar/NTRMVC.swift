@@ -18,11 +18,20 @@ class NTRMVC: UIViewController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
+    @IBOutlet weak var Button1: UIButton!
+    @IBOutlet weak var Button2: UIButton!
+    @IBOutlet weak var Button3: UIButton!
+    @IBOutlet weak var Button4: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         menuButton.target = revealViewController();
         menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-        // Do any additional setup after loading the view.
+        
+        Button1.setTitle("Metal", for: .normal)
+        Button2.setTitle("Cartón", for: .normal)
+        Button3.setTitle("Plástico", for: .normal)
+        Button4.setTitle("Orgánico", for: .normal)
     }
 
     override func didReceiveMemoryWarning() {

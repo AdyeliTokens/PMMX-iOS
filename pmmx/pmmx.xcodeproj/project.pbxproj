@@ -51,6 +51,9 @@
 		9EAA695C1FE48A2400174C8F /* SwipeCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA695B1FE48A2400174C8F /* SwipeCardViewController.swift */; };
 		9EAA695D1FE48A2400174C8F /* SwipeCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA695B1FE48A2400174C8F /* SwipeCardViewController.swift */; };
 		9EAA695E1FE48A2400174C8F /* SwipeCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA695B1FE48A2400174C8F /* SwipeCardViewController.swift */; };
+		9EAACCF12024E0BE00B51C87 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAACCF02024E0BE00B51C87 /* Helpers.swift */; };
+		9EAACCF22024E0BE00B51C87 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAACCF02024E0BE00B51C87 /* Helpers.swift */; };
+		9EAACCF32024E0BE00B51C87 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAACCF02024E0BE00B51C87 /* Helpers.swift */; };
 		9EABF5861FCF838D00A054E9 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4AB7B51FCF802B0030E12C /* CalendarVC.swift */; };
 		9EABF5871FCF838E00A054E9 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4AB7B51FCF802B0030E12C /* CalendarVC.swift */; };
 		9EABF5881FCF838E00A054E9 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4AB7B51FCF802B0030E12C /* CalendarVC.swift */; };
@@ -146,6 +149,7 @@
 		9EA2C78D1FE8860400407BFA /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		9EA51FFA1FC74041004D20E0 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRViewController.swift; path = pmmx/Utils/QRViewController.swift; sourceTree = SOURCE_ROOT; };
 		9EAA695B1FE48A2400174C8F /* SwipeCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardViewController.swift; sourceTree = "<group>"; };
+		9EAACCF02024E0BE00B51C87 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		9EC272E01FCE7FA000E511A8 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		9EC39BD7201802F60084D779 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		9EC39BDB2018DC570084D779 /* NTRMVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTRMVC.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 				9E42915E1FBBBDD700995862 /* DBConections.swift */,
 				9E2AAB751FCE55030026D48F /* SearchViewController.swift */,
 				9E18ABE3201F9A3E00969F8A /* SearchOrigenViewController.swift */,
+				9EAACCF02024E0BE00B51C87 /* Helpers.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -692,6 +697,7 @@
 				9EC41F031FCC75FF00E6E635 /* SummaryViewController.swift in Sources */,
 				9ECB9F661FB61484006E8E90 /* SWRevealViewController.m in Sources */,
 				9EA2C78A1FE883A900407BFA /* CollectionViewController.swift in Sources */,
+				9EAACCF12024E0BE00B51C87 /* Helpers.swift in Sources */,
 				9EC41F001FCC75FF00E6E635 /* WeeklyViewController.swift in Sources */,
 				9EA51FFB1FC74041004D20E0 /* QRViewController.swift in Sources */,
 				9EC41EFD1FCC75FF00E6E635 /* CustomizeTableViewCell.swift in Sources */,
@@ -718,6 +724,7 @@
 				9EA51FFC1FC74041004D20E0 /* QRViewController.swift in Sources */,
 				9EAA695D1FE48A2400174C8F /* SwipeCardViewController.swift in Sources */,
 				9EABF58A1FCF839100A054E9 /* CircularSliderVC.swift in Sources */,
+				9EAACCF22024E0BE00B51C87 /* Helpers.swift in Sources */,
 				9E87C8411FB62534002F1422 /* ViewMenuVC.swift in Sources */,
 				9EA2C78B1FE883A900407BFA /* CollectionViewController.swift in Sources */,
 				9E622B381FB4FB48006143DA /* pmmxTests.swift in Sources */,
@@ -747,6 +754,7 @@
 				9EA51FFD1FC74041004D20E0 /* QRViewController.swift in Sources */,
 				9EAA695C1FE48A2400174C8F /* SwipeCardViewController.swift in Sources */,
 				9EABF58B1FCF839200A054E9 /* CircularSliderVC.swift in Sources */,
+				9EAACCF32024E0BE00B51C87 /* Helpers.swift in Sources */,
 				9E87C8421FB62534002F1422 /* ViewMenuVC.swift in Sources */,
 				9EA2C78C1FE883A900407BFA /* CollectionViewController.swift in Sources */,
 				9E622B431FB4FB48006143DA /* pmmxUITests.swift in Sources */,

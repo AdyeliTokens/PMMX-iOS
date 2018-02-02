@@ -6,6 +6,7 @@
     <dependencies>
         <deployment version="4096" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,28 +20,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="maya" translatesAutoresizingMaskIntoConstraints="NO" id="dXp-py-PcA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="maya" translatesAutoresizingMaskIntoConstraints="NO" id="dXp-py-PcA">
                                 <rect key="frame" x="283" y="120" width="200" height="200"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dXp-py-PcA" secondAttribute="height" multiplier="1:1" id="3ge-W4-sPr"/>
+                                    <constraint firstAttribute="height" constant="200" id="AsM-gJ-wGV"/>
+                                    <constraint firstAttribute="width" constant="200" id="QOb-po-ehQ"/>
+                                </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="04B-e9-idc">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="04B-e9-idc">
                                 <rect key="frame" x="119" y="456" width="553" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="553" id="2w3-Wl-5Rr"/>
+                                    <constraint firstAttribute="width" secondItem="04B-e9-idc" secondAttribute="height" multiplier="553:30" id="3Ro-xh-Krq"/>
+                                    <constraint firstAttribute="height" constant="30" id="XIZ-EH-yXv"/>
+                                </constraints>
                                 <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="go" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8YP-DO-hkR">
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8YP-DO-hkR">
                                 <rect key="frame" x="119" y="502" width="553" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8YP-DO-hkR" secondAttribute="height" multiplier="553:30" id="79N-O8-4TA"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="553" id="8nk-BQ-CTH"/>
+                                    <constraint firstAttribute="height" constant="30" id="Wa4-N3-NkO"/>
+                                </constraints>
                                 <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETc-xD-Zpa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETc-xD-Zpa">
                                 <rect key="frame" x="119" y="580" width="553" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.40000000000000002" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="553" id="BIf-dH-Omf"/>
+                                    <constraint firstAttribute="width" secondItem="ETc-xD-Zpa" secondAttribute="height" multiplier="553:30" id="joc-hG-Yd8"/>
+                                    <constraint firstAttribute="height" constant="30" id="s4b-AG-4Mi"/>
+                                </constraints>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -50,6 +67,24 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dXp-py-PcA" firstAttribute="top" secondItem="xVG-ol-QDu" secondAttribute="top" constant="56" id="0Kx-9g-q4l"/>
+                            <constraint firstItem="xVG-ol-QDu" firstAttribute="trailing" secondItem="ETc-xD-Zpa" secondAttribute="trailing" constant="96" id="1fr-7U-t3b"/>
+                            <constraint firstItem="ETc-xD-Zpa" firstAttribute="top" secondItem="8YP-DO-hkR" secondAttribute="bottom" constant="48" id="2mg-M5-oeN"/>
+                            <constraint firstItem="dXp-py-PcA" firstAttribute="leading" secondItem="xVG-ol-QDu" secondAttribute="leading" constant="283" id="8Il-UO-bHZ"/>
+                            <constraint firstItem="ETc-xD-Zpa" firstAttribute="leading" secondItem="xVG-ol-QDu" secondAttribute="leading" constant="119" id="9m7-jb-Qjt"/>
+                            <constraint firstItem="04B-e9-idc" firstAttribute="top" secondItem="dXp-py-PcA" secondAttribute="bottom" constant="136" id="C0m-44-vox"/>
+                            <constraint firstItem="04B-e9-idc" firstAttribute="leading" secondItem="xVG-ol-QDu" secondAttribute="leading" constant="119" id="GXM-XW-nj1"/>
+                            <constraint firstItem="8YP-DO-hkR" firstAttribute="top" secondItem="04B-e9-idc" secondAttribute="bottom" constant="16" id="Pp9-73-N6B"/>
+                            <constraint firstItem="ETc-xD-Zpa" firstAttribute="top" secondItem="8YP-DO-hkR" secondAttribute="bottom" constant="48" id="SS5-RN-Ov6"/>
+                            <constraint firstItem="xVG-ol-QDu" firstAttribute="trailing" secondItem="04B-e9-idc" secondAttribute="trailing" constant="96" id="b5o-M1-2Oo"/>
+                            <constraint firstItem="8YP-DO-hkR" firstAttribute="top" secondItem="04B-e9-idc" secondAttribute="bottom" constant="16" id="ivJ-11-hYS"/>
+                            <constraint firstItem="xVG-ol-QDu" firstAttribute="trailing" secondItem="dXp-py-PcA" secondAttribute="trailing" constant="285" id="j0v-yr-bHW"/>
+                            <constraint firstItem="xVG-ol-QDu" firstAttribute="trailing" secondItem="8YP-DO-hkR" secondAttribute="trailing" constant="96" id="m03-0f-UYf"/>
+                            <constraint firstItem="8YP-DO-hkR" firstAttribute="leading" secondItem="xVG-ol-QDu" secondAttribute="leading" constant="119" id="tCF-cU-2Ej"/>
+                            <constraint firstItem="xVG-ol-QDu" firstAttribute="bottom" secondItem="ETc-xD-Zpa" secondAttribute="bottom" constant="414" id="vYD-lj-tLl"/>
+                            <constraint firstItem="04B-e9-idc" firstAttribute="top" secondItem="dXp-py-PcA" secondAttribute="bottom" constant="136" id="zeG-8o-uw3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="xVG-ol-QDu"/>
                     </view>
                     <navigationItem key="navigationItem" id="WVh-PG-XR4"/>
@@ -101,18 +136,18 @@
                                         <rect key="frame" x="0.0" y="28" width="768" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hli-8N-rcH" id="Ogl-IB-yFh">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="68.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qr9-dE-Ey5">
-                                                    <rect key="frame" x="88" y="0.0" width="242" height="58"/>
+                                                    <rect key="frame" x="143" y="0.0" width="207" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i9l-nf-IIf">
-                                                    <rect key="frame" x="-60" y="12" width="30" height="30"/>
+                                                    <rect key="frame" x="39" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -152,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hoQ-1c-uTd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3487" y="-47"/>
+            <point key="canvasLocation" x="3486.71875" y="-47.4609375"/>
         </scene>
         <!--MenuVC-->
         <scene sceneID="Zj7-RV-QRL">
@@ -222,7 +257,7 @@
                         <viewLayoutGuide key="safeArea" id="s78-he-Cbi"/>
                     </view>
                     <navigationItem key="navigationItem" id="bqV-r6-FWE">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="zd2-J7-Kfa"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="zd2-J7-Kfa"/>
                     </navigationItem>
                     <connections>
                         <outlet property="dmsButton" destination="1zD-9o-Cu0" id="IYw-oj-lNK"/>
@@ -321,7 +356,7 @@
                         <viewLayoutGuide key="safeArea" id="3zD-2J-JWG"/>
                     </view>
                     <navigationItem key="navigationItem" id="ly9-xN-1iF">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="IW3-X6-s2R"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="IW3-X6-s2R"/>
                     </navigationItem>
                     <connections>
                         <outlet property="calendar" destination="jDn-CB-Vxw" id="l00-ic-AV2"/>
@@ -411,7 +446,7 @@
                         <viewLayoutGuide key="safeArea" id="vkk-Gg-Soa"/>
                     </view>
                     <navigationItem key="navigationItem" id="Kth-67-Iqu">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="6bh-rb-0rd"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="6bh-rb-0rd"/>
                     </navigationItem>
                     <connections>
                         <outlet property="circularProgressView" destination="JE9-Ha-WeE" id="9ON-b5-W6g"/>
@@ -585,7 +620,7 @@
                     </connections>
                 </viewController>
                 <navigationItem id="mzm-Qy-Tez">
-                    <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="J26-2E-SP3"/>
+                    <barButtonItem key="leftBarButtonItem" image="menu" id="J26-2E-SP3"/>
                 </navigationItem>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HI3-Yv-Mzq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -723,13 +758,14 @@
                                     <action selector="backButton:" destination="9w4-oM-Pcj" eventType="touchUpInside" id="XHh-XK-n71"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NTRM" translatesAutoresizingMaskIntoConstraints="NO" id="7Nm-RV-O52">
-                                <rect key="frame" x="90" y="98" width="589" height="592"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQW-SD-Zrd">
                                 <rect key="frame" x="137" y="138" width="228" height="228"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="metalButton:" destination="9w4-oM-Pcj" eventType="touchUpInside" id="n31-uS-gnk"/>
                                 </connections>
@@ -737,6 +773,11 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvg-Br-ADI">
                                 <rect key="frame" x="410" y="138" width="228" height="228"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="cartonButton:" destination="9w4-oM-Pcj" eventType="touchUpInside" id="696-Cp-z95"/>
                                 </connections>
@@ -744,15 +785,13 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zib-SV-nqv">
                                 <rect key="frame" x="137" y="419" width="228" height="228"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="plasticoButton:" destination="9w4-oM-Pcj" eventType="touchUpInside" id="BEN-ei-xqi"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FX-nf-nah">
-                                <rect key="frame" x="410" y="401" width="228" height="228"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="organicoButton:" destination="9w4-oM-Pcj" eventType="touchUpInside" id="idz-gK-5Od"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tZ-Cy-lFQ">
@@ -767,6 +806,18 @@
                                     <action selector="otrosButton:" destination="9w4-oM-Pcj" eventType="touchUpInside" id="iuE-x7-ayP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FX-nf-nah">
+                                <rect key="frame" x="410" y="419" width="228" height="228"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="organicoButton:" destination="9w4-oM-Pcj" eventType="touchUpInside" id="idz-gK-5Od"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="92D-kc-o3g"/>
@@ -775,6 +826,10 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" id="Ad4-DA-m7H"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="Button1" destination="kQW-SD-Zrd" id="FAt-gs-Xni"/>
+                        <outlet property="Button2" destination="rvg-Br-ADI" id="Adg-Kv-u8t"/>
+                        <outlet property="Button3" destination="zib-SV-nqv" id="g7S-xF-O9S"/>
+                        <outlet property="Button4" destination="2FX-nf-nah" id="SH8-kO-EgH"/>
                         <outlet property="menuButton" destination="Ad4-DA-m7H" id="fCt-0t-nWL"/>
                     </connections>
                 </viewController>
@@ -895,7 +950,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBA-TH-hdU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6241" y="1153"/>
+            <point key="canvasLocation" x="6240.625" y="1152.5390625"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hce-tC-Ax6">
@@ -1122,7 +1177,7 @@
                         <viewLayoutGuide key="safeArea" id="SAs-bX-h0A"/>
                     </view>
                     <navigationItem key="navigationItem" id="VRN-3e-KCv">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="uw5-hI-6yF"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="uw5-hI-6yF"/>
                     </navigationItem>
                     <connections>
                         <outlet property="menuItem" destination="uw5-hI-6yF" id="cQX-Lt-iGE"/>
@@ -1207,7 +1262,7 @@
                         <viewLayoutGuide key="safeArea" id="pw6-jf-DvL"/>
                     </view>
                     <navigationItem key="navigationItem" id="Wf0-f0-M8l">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="gf2-K0-fHi"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="gf2-K0-fHi"/>
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="gf2-K0-fHi" id="Wme-CH-ZVh"/>
@@ -1245,7 +1300,7 @@
                                         <rect key="frame" x="0.0" y="21.5" width="367" height="164.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="367" height="164"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="367" height="164.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJj-3O-Ssl">
@@ -1410,7 +1465,7 @@
                         <viewLayoutGuide key="safeArea" id="daU-5P-cov"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ss7-hg-amX">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="8a0-CQ-lNd"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="8a0-CQ-lNd"/>
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="8a0-CQ-lNd" id="lJt-GQ-5cv"/>
@@ -1485,7 +1540,7 @@
                     </connections>
                 </viewController>
                 <navigationItem id="U33-SY-uzk">
-                    <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="va9-jc-hua"/>
+                    <barButtonItem key="leftBarButtonItem" image="menu" id="va9-jc-hua"/>
                 </navigationItem>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ad-K1-P6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1493,7 +1548,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NTRM" width="330" height="333"/>
         <image name="diaphragm" width="32" height="32"/>
         <image name="focke" width="1024" height="683"/>
         <image name="gauge" width="32" height="32"/>
