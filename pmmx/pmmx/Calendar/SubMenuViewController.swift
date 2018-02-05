@@ -58,12 +58,12 @@ class SubMenuViewController: UIViewController,CircleMenuDelegate {
         self.addItems()
         
         let button = CircleMenu(
-            frame: CGRect(x: UIScreen.main.bounds.size.width*0.4, y: UIScreen.main.bounds.size.height*0.3, width: 170, height: 170),
+            frame: CGRect(x: UIScreen.main.bounds.size.width*0.4, y: UIScreen.main.bounds.size.height*0.3, width: 100, height: 100),
             normalIcon:"quality",
             selectedIcon:"icon_close",
             buttonsCount: self.subCategoriasArray.count,
             duration: 0.5,
-            distance: 300)
+            distance: 150)
         
         button.backgroundColor = UIColor(red:1, green:1, blue:1, alpha:1)
         button.setTitle(".", for: .normal)
