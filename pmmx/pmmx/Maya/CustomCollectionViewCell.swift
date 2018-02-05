@@ -14,4 +14,6 @@ class CustomCollectionViewCell: UICollectionViewCell
     @IBOutlet weak var txtComment: UILabel!
     @IBOutlet weak var imgImage: UIImageView!
     @IBOutlet weak var txtBy: UILabel!
+    @IBOutlet weak var itemButton: UIButton!
+    
 }
