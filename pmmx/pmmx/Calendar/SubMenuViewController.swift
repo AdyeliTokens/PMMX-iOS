@@ -78,7 +78,7 @@ class SubMenuViewController: UIViewController,CircleMenuDelegate {
     {
         let hc = subCategoriasArray[atIndex]
         button.backgroundColor = items[atIndex].color
-        button.setTitle(hc.Nombre, for: .normal)
+        button.setTitle(hc.NombreCorto, for: .normal)
         
         let highlightedImage  = UIImage(named: items[atIndex].icon)?.withRenderingMode(.alwaysTemplate)
         button.setImage(highlightedImage, for: .highlighted)
@@ -99,12 +99,11 @@ class SubMenuViewController: UIViewController,CircleMenuDelegate {
     func nextController(IdSubCategoria: Int, Nombre: String, IdGrupo: Int)
     {
         let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "CollectionVC") as! CollectionViewController
+        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "NTRMVC") as! NTRMVC
         desController.IdCategoria = self.IdCategoria
         desController.IdEvento = self.IdEvento
         desController.Title = Nombre
         desController.idGrupo = IdGrupo
-        desController.IdSubCategoria = IdSubCategoria
         
         let frontViewController = UINavigationController.init(rootViewController: desController)
         revealViewController().pushFrontViewController(frontViewController, animated: true)

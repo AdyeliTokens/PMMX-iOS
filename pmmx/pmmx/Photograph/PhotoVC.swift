@@ -28,6 +28,7 @@ class PhotoVC: UIViewController , UINavigationControllerDelegate, UIImagePickerC
     var IdGrupo: Int = 0
     var Tipo: Int = 1
     var Titulo: String? = ""
+    var array: [Pregunta] = [];
     
     var imagePicker = UIImagePickerController()
     private var lastPoint = CGPoint.zero
@@ -346,6 +347,8 @@ class PhotoVC: UIViewController , UINavigationControllerDelegate, UIImagePickerC
             myVC.IdEvento = self.IdEvento
             myVC.Title = Titulo!
             myVC.idGrupo = IdGrupo
+            myVC.array = array
+        
         let frontViewController = UINavigationController.init(rootViewController: myVC)
         revealViewController.pushFrontViewController(frontViewController, animated: true)
     }
