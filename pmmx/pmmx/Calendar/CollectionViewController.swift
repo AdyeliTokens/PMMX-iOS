@@ -113,7 +113,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView,viewForSupplementaryElementOfKind kind: String,at indexPath: IndexPath) -> UICollectionReusableView {
+    /*func collectionView(_ collectionView: UICollectionView,viewForSupplementaryElementOfKind kind: String,at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "customHeader", for: indexPath) as! CustomHeaderView
@@ -122,7 +122,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
         default:
             assert(false, "Unexpected element kind")
         }
-    }
+    }*/
     
     func directionPan(direccion: CGFloat)
     {
