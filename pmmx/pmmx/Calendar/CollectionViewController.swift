@@ -21,7 +21,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
     let api = DBConections();
     
     var IdCategoria : Int = 0;
-    var IdSubCategoria : Int = 0;
     var IdEvento: Int = 0;
     var Title : String = "";
     var idGrupo : Int = 0;
@@ -51,8 +50,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
         }
         
         titleLabel.text = Title
-        
-        self.downloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,14 +97,19 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
         
         if(array.count == 0)
         {
-            if(IdCategoria == 7)
-            {
-                self.justDoIt()
+            let alert = UIAlertController(title: "Finish", message: "Do you want to", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let OKAction = UIAlertAction(title: "Finish GembaWalk", style: .default) { (action:UIAlertAction!) in
+                self.finishGemba()
             }
-            else
-            {
-                print("finish")
+            alert.addAction(OKAction)
+            
+            let cancelAction = UIAlertAction(title: "Continue", style: .cancel) { (action:UIAlertAction!) in
+                self.continueGemba()
             }
+            alert.addAction(cancelAction)
+            
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -122,15 +124,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
         }
     }
     
-    func downloadData()
-    {
-        api.getPreguntas(idGrupo: idGrupo )
-        {(res)  in
-            self.array = res
-            self.collectionView!.reloadData()
-        }
-    }
-    
     func directionPan(direccion: CGFloat)
     {
         self.Direccion = direccion
@@ -140,7 +133,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
             switch(IdCategoria)
             {
                 case 7:
-                   justDoIt();
+                   self.photoVC();
                 default:
                     print(IdCategoria)
             }
@@ -148,43 +141,6 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
         else
         {
           self.addAnswer(respuesta: 1, comentario: "") // SI
-        }
-    }
-    
-    func ntrmController()
-    {
-        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "NTRMVC") as! NTRMVC
-        desController.IdCategoria = self.IdCategoria
-        desController.IdEvento = self.IdEvento
-        desController.Title = self.Title
-        desController.idGrupo = idGrupo
-        desController.IdSubCategoria = IdSubCategoria
-        
-        let frontViewController = UINavigationController.init(rootViewController: desController)
-        revealViewController().pushFrontViewController(frontViewController, animated: true)
-    }
-    
-    func justDoIt()
-    {
-        
-        if(idGrupo == 13)
-        {
-            self.ntrmController()
-        }
-        else
-        {
-            let revealViewController : SWRevealViewController = self.revealViewController()
-            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let desController = mainStoryBoard.instantiateViewController(withIdentifier: "PhotoVC") as! PhotoVC
-                desController.IdEvento = self.IdEvento
-                desController.IdCategoria = self.IdCategoria
-                desController.Titulo = self.Title
-                desController.IdGrupo = self.idGrupo
-                desController.Tipo = self.tipo
-            
-            let frontViewController = UINavigationController.init(rootViewController: desController)
-            revealViewController.pushFrontViewController(frontViewController, animated: true)
         }
     }
     
@@ -200,49 +156,56 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
     
     @IBAction func finishButton(_ sender: UIButton) {
         self.tipo = 1
-        self.justDoIt()
+        self.photoVC()
+    }
+    
+    func photoVC()
+    {
+        let revealViewController : SWRevealViewController = self.revealViewController()
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "PhotoVC") as! PhotoVC
+        desController.IdEvento = self.IdEvento
+        desController.IdCategoria = self.IdCategoria
+        desController.Titulo = self.Title
+        desController.IdGrupo = self.idGrupo
+        desController.Tipo = self.tipo
+        desController.array = self.array
+        
+        let frontViewController = UINavigationController.init(rootViewController: desController)
+        revealViewController.pushFrontViewController(frontViewController, animated: true)
     }
     
     @IBAction func backButton(_ sender: UIButton) {
         let revealViewController : SWRevealViewController = self.revealViewController()
         let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "SubMenuVC") as! SubMenuViewController
+        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "NTRMVC") as! NTRMVC
         desController.IdEvento = self.IdEvento
         desController.IdCategoria = self.IdCategoria
+        
         let frontViewController = UINavigationController.init(rootViewController: desController)
         revealViewController.pushFrontViewController(frontViewController, animated: true)
     }
     
-    func showData()
+    func continueGemba()
     {
-        if(self.array.count > 0)
-        {
-           /* self.arrayData.removeAll()
-            
-            api.getOrigen(IdWorkCenter: parameters[0] as! Int)
-            {(res) in
-                self.origenArray = (res as NSArray).mutableCopy() as! NSMutableArray
-                let respuestas:NSDictionary = self.origenArray[0] as! NSDictionary
-                self.arrayData.append(respuestas["Id"] as AnyObject);
-                self.saveMWCR(IdOrigen: respuestas["Id"] as! Int);
-            }*/
-        }
-        else
-        {
-            let messageButton: UIButton = UIButton(frame: CGRect(x: self.view.bounds.size.width/3, y: self.view.bounds.size.height/2, width: 200, height: 100))
-            messageButton.backgroundColor = UIColor(red: 48/255.0, green: 145/255.0, blue: 240/255.0, alpha: 1.0)
-            messageButton.setTitle("Please try again.", for: .normal)
-            messageButton.sizeToFit()
-            messageButton.addTarget(self, action: #selector(self.reloadView), for: .touchUpInside)
-            
-            self.view.addSubview(messageButton)
-        }
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "SubMenuVC") as! SubMenuViewController
+        desController.IdCategoria = self.IdCategoria
+        desController.IdEvento = self.IdEvento
+        
+        let frontViewController = UINavigationController.init(rootViewController: desController)
+        revealViewController().pushFrontViewController(frontViewController, animated: true)
+    }
+   
+    func finishGemba()
+    {
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "CalendarVC") as! CalendarVC
+        
+        let frontViewController = UINavigationController.init(rootViewController: desController)
+        revealViewController().pushFrontViewController(frontViewController, animated: true)
     }
     
-    @objc func reloadView()
-    {
-        let myVC = storyboard?.instantiateViewController(withIdentifier: "LineLeadVC") as! LineLeadViewController
-        navigationController?.pushViewController(myVC, animated: true)
-    }
+    
     
 }
