@@ -175,15 +175,34 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
         revealViewController.pushFrontViewController(frontViewController, animated: true)
     }
     
-    @IBAction func backButton(_ sender: UIButton) {
-        let revealViewController : SWRevealViewController = self.revealViewController()
-        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "NTRMVC") as! NTRMVC
-        desController.IdEvento = self.IdEvento
-        desController.IdCategoria = self.IdCategoria
+    
+    @IBAction func backButton(_ sender: UIButton)
+    {
+        if(self.array[0].Anexo1 != "")
+        {
+            let revealViewController : SWRevealViewController = self.revealViewController()
+            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let desController = mainStoryBoard.instantiateViewController(withIdentifier: "NTRMVC") as! NTRMVC
+            desController.IdEvento = self.IdEvento
+            desController.IdCategoria = self.IdCategoria
+            desController.Title = self.Title
+            desController.idGrupo = self.idGrupo
+            
+            let frontViewController = UINavigationController.init(rootViewController: desController)
+            revealViewController.pushFrontViewController(frontViewController, animated: true)
+        }
+        else
+        {
+            let revealViewController : SWRevealViewController = self.revealViewController()
+            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let desController = mainStoryBoard.instantiateViewController(withIdentifier: "SubMenuVC") as! SubMenuViewController
+            desController.IdEvento = self.IdEvento
+            desController.IdCategoria = self.IdCategoria
+            
+            let frontViewController = UINavigationController.init(rootViewController: desController)
+            revealViewController.pushFrontViewController(frontViewController, animated: true)
+        }
         
-        let frontViewController = UINavigationController.init(rootViewController: desController)
-        revealViewController.pushFrontViewController(frontViewController, animated: true)
     }
     
     func continueGemba()

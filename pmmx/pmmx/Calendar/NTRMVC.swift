@@ -31,7 +31,6 @@ class NTRMVC: UIViewController {
         menuButton.target = revealViewController();
         menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
         
-        
         self.Button1.isHidden = true
         self.Button2.isHidden = true
         self.Button3.isHidden = true
@@ -88,7 +87,6 @@ class NTRMVC: UIViewController {
         let frontViewController = UINavigationController.init(rootViewController: desController)
         revealViewController().pushFrontViewController(frontViewController, animated: true)
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
