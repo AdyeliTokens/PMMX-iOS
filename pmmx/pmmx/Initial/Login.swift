@@ -14,7 +14,7 @@ class Login: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
-    let URL_USER_REGISTER = "http://serverpmi.tr3sco.net/api/Login"
+    let URL_USER_REGISTER = "http://serverpmi.tr3sco.net/api/Account/ExternalLogin"
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
@@ -65,7 +65,8 @@ class Login: UIViewController, UITextViewDelegate {
         let parameters: Parameters=[
             "Email":txtEmail.text!,
             "Password":txtPassword.text!,
-            "Llave": token ?? ""
+            "Llave": token ?? "",
+            "RememberMe": true
         ]
         
         Alamofire.request(URL_USER_REGISTER, method: .post, parameters: parameters)

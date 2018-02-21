@@ -93,6 +93,8 @@
 		9ECB9F681FB6167F006E8E90 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECB9F671FB6167F006E8E90 /* MenuVC.swift */; };
 		9ECB9F691FB6167F006E8E90 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECB9F671FB6167F006E8E90 /* MenuVC.swift */; };
 		9ECB9F6A1FB6167F006E8E90 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECB9F671FB6167F006E8E90 /* MenuVC.swift */; };
+		9ED99015203635D50071A653 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E622B211FB4FB48006143DA /* Login.swift */; };
+		9ED99016203635D60071A653 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E622B211FB4FB48006143DA /* Login.swift */; };
 		C2ACEA7211751FA35F235532 /* Pods_pmmxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A8DE2EC02C044ECC954179 /* Pods_pmmxUITests.framework */; };
 		F7957F7110FC38276921B01B /* Pods_pmmx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5194A680B1A770795297B16A /* Pods_pmmx.framework */; };
 /* End PBXBuildFile section */
@@ -727,6 +729,7 @@
 				9EAACCF22024E0BE00B51C87 /* Helpers.swift in Sources */,
 				9E87C8411FB62534002F1422 /* ViewMenuVC.swift in Sources */,
 				9EA2C78B1FE883A900407BFA /* CollectionViewController.swift in Sources */,
+				9ED99015203635D50071A653 /* Login.swift in Sources */,
 				9E622B381FB4FB48006143DA /* pmmxTests.swift in Sources */,
 				9E87C8451FB6256C002F1422 /* MenuTableViewCell.swift in Sources */,
 				9EB282611FDF0DD60032C435 /* SurveyVC.swift in Sources */,
@@ -757,6 +760,7 @@
 				9EAACCF32024E0BE00B51C87 /* Helpers.swift in Sources */,
 				9E87C8421FB62534002F1422 /* ViewMenuVC.swift in Sources */,
 				9EA2C78C1FE883A900407BFA /* CollectionViewController.swift in Sources */,
+				9ED99016203635D60071A653 /* Login.swift in Sources */,
 				9E622B431FB4FB48006143DA /* pmmxUITests.swift in Sources */,
 				9E87C8461FB6256C002F1422 /* MenuTableViewCell.swift in Sources */,
 				9EB282621FDF0DD70032C435 /* SurveyVC.swift in Sources */,

@@ -34,10 +34,41 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         self.tableView.separatorStyle = .none
         
         self.loadData(Dias: -30)
+        self.createFloatingButton()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    var roundButton = UIButton()
+    func createFloatingButton() {
+        self.roundButton = UIButton(type: .custom)
+        self.roundButton.setTitleColor(UIColor.red, for: .normal)
+        self.roundButton.addTarget(self, action: #selector(ButtonClick(_:)), for: UIControlEvents.touchUpInside)
+        //change view to navigationController?.view, if you have a navigationController in this tableview
+        self.navigationController?.view.addSubview(roundButton)
+    }
+    
+    @IBAction func ButtonClick(_ sender: UIButton){
+        print("Add")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        roundButton.layer.cornerRadius = roundButton.layer.frame.size.width/2
+        roundButton.backgroundColor = UIColor.red
+        roundButton.clipsToBounds = true
+        let image = UIImage(named: "add")?.withRenderingMode(.alwaysTemplate)
+        roundButton.setImage(image, for: .normal)
+        roundButton.tintColor = UIColor.white
+        roundButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            roundButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -3),
+            roundButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -53),
+            roundButton.widthAnchor.constraint(equalToConstant: 50),
+            roundButton.heightAnchor.constraint(equalToConstant: 50)])
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,6 +143,13 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         {
             return nil
         }
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+        let frontViewController = UINavigationController.init(rootViewController: desController)
+        revealViewController().pushFrontViewController(frontViewController, animated: true)
     }
     
 }
