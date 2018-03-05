@@ -13,9 +13,11 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
-    var eventosArray = [Eventos]()
+    
     let api = DBConections()
+    var IdCategoria : Int = 0
     var somedays : Array = [String]()
+    var eventosArray = [Eventos]()
     
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
     fileprivate lazy var dateFormatter1: DateFormatter = {
@@ -81,7 +83,7 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         cell?.imageView?.image = UIImage(named: "calendar")
         cell?.textLabel?.text = self.eventosArray[indexPath.row].Descripcion+" "+self.eventosArray[indexPath.row].FechaInicio
         
-        var token = self.eventosArray[indexPath.row].FechaInicio.components(separatedBy: " ")
+        var token = self.eventosArray[indexPath.row].FechaInicio.components(separatedBy: "T")
         self.somedays.append(token[0])
         return cell!
     }
@@ -114,7 +116,7 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     
     func loadData(Dias: Int)
     {
-        api.getEventos(Dias: Dias){(res) in
+        api.getEventos(Dias: Dias, IdCategoria: IdCategoria){(res) in
             self.eventosArray = res
             self.tableView.reloadData()
         }
@@ -125,7 +127,7 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         formatter.dateFormat = "MM/dd/yyyy"
         let fecha = formatter.string(from: date)
         
-        api.getEventosbyFecha(Fecha: fecha){(res) in
+        api.getEventosbyFecha(Fecha: fecha, IdCategoria: IdCategoria){(res) in
             self.eventosArray = res
             self.tableView.reloadData()
         }

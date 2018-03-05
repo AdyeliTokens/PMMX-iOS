@@ -76,6 +76,7 @@ class MenuVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     @IBAction func gembaButton(_ sender: UIButton) {
         let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let desController = mainStoryBoard.instantiateViewController(withIdentifier: "CalendarVC") as! CalendarVC
+        desController.IdCategoria = 7
         let frontViewController = UINavigationController.init(rootViewController: desController)
         revealViewController().pushFrontViewController(frontViewController, animated: true)
     }
@@ -83,6 +84,7 @@ class MenuVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     @IBAction func metrologiaButton(_ sender: UIButton) {
         let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let desController = mainStoryBoard.instantiateViewController(withIdentifier: "CalendarVC") as! CalendarVC
+        desController.IdCategoria = 10
         let frontViewController = UINavigationController.init(rootViewController: desController)
         revealViewController().pushFrontViewController(frontViewController, animated: true)
     }

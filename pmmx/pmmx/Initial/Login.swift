@@ -90,7 +90,6 @@ class Login: UIViewController, UITextViewDelegate {
                                 self.defaults.set((respuestas?.value(forKey: "UserName") as! String?)!, forKey: "UserName")
                                 self.defaults.set((respuestas?.value(forKey: "Email") as! String?)!, forKey: "Email")
                                 self.defaults.set((respuestas?.value(forKey: "Id") as! Int?)!, forKey: "Id")
-                                self.defaults.set((respuestas?.value(forKey: "Password") as! String?)!, forKey: "Password")
                                 self.defaults.set((respuestas?.value(forKey: "IdEntorno") as! Int?)!, forKey: "IdEntorno")
                                 self.defaults.set((respuestas?.value(forKey: "IdPersona") as! Int?)!, forKey: "IdPersona")
                                 

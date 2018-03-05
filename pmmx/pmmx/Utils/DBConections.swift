@@ -48,11 +48,11 @@ class DBConections: UIViewController
         }
     }
     
-    func getEventos(Dias: Int,completion:@escaping (Array<Eventos>) -> Void )
+    func getEventos(Dias: Int, IdCategoria: Int,completion:@escaping (Array<Eventos>) -> Void )
     {
         self.eventosArray.removeAll()
         let defaultValues = UserDefaults.standard
-        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Evento?idResponsable="+String(describing: defaultValues.string(forKey: "IdPersona") ?? "")+"&dias="+String(describing: Dias)+"&activo=true"
+        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Evento?idResponsable="+String(describing: defaultValues.string(forKey: "IdPersona") ?? "")+"&dias="+String(describing: Dias)+"&IdCategoria="+String(describing: IdCategoria)+"&activo=true"
         
         self.eventosArray.removeAll()
         Alamofire.request(URL_CONNECT).responseJSON{ response in
@@ -65,11 +65,11 @@ class DBConections: UIViewController
         }
     }
     
-    func getEventosbyFecha(Fecha: String,completion:@escaping (Array<Eventos>) -> Void )
+    func getEventosbyFecha(Fecha: String,IdCategoria: Int, completion:@escaping (Array<Eventos>) -> Void )
     {
         self.eventosArray.removeAll()
         let defaultValues = UserDefaults.standard
-        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Evento?idResponsable="+String(describing: defaultValues.string(forKey: "IdPersona") ?? "")+"&fecha="+Fecha+"&activo=true"
+        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Evento?idResponsable="+String(describing: defaultValues.string(forKey: "IdPersona") ?? "")+"&IdCategoria="+String(describing: IdCategoria)+"&fecha="+Fecha+"&activo=true"
         
         self.eventosArray.removeAll()
         Alamofire.request(URL_CONNECT).responseJSON{ response in

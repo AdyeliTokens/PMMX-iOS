@@ -66,8 +66,9 @@ class Eventos
         self.Nota = (dictionary["Nota"] as? String)
         self.Activo = (dictionary["Activo"] as? Bool)!
         
-        self.FechaInicio = dateFormater(Fecha: self.FechaInicio)
-        self.FechaFin = dateFormater(Fecha: self.FechaFin)
+        
+        //self.FechaInicio = dateFormater(Fecha: self.FechaInicio)
+        //self.FechaFin = dateFormater(Fecha: self.FechaFin)
     }
     
     func dateFormater(Fecha: String) -> String
@@ -77,8 +78,18 @@ class Eventos
             formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let myString = formatter.string(from: theDate)
             return myString
-        } else {
-            return ("wrong format")
+        }
+        else
+        {
+            let dateFormatter = DateFormatter()
+            let tempLocale = dateFormatter.locale // save locale temporarily
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            let date = dateFormatter.date(from: Fecha)!
+            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+            dateFormatter.locale = tempLocale // reset the locale
+            let myString = dateFormatter.string(from: date)
+            return myString
         }
     }
 }
