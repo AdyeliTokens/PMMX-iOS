@@ -66,6 +66,9 @@
 		9EB282601FDF00700032C435 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC41EFA1FCC75FE00E6E635 /* SummaryViewController.swift */; };
 		9EB282611FDF0DD60032C435 /* SurveyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC41EF31FCC75FD00E6E635 /* SurveyVC.swift */; };
 		9EB282621FDF0DD70032C435 /* SurveyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC41EF31FCC75FD00E6E635 /* SurveyVC.swift */; };
+		9EB65D05204DBE150082817D /* EventDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB65D04204DBE150082817D /* EventDescriptionViewController.swift */; };
+		9EB65D06204DBE150082817D /* EventDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB65D04204DBE150082817D /* EventDescriptionViewController.swift */; };
+		9EB65D07204DBE150082817D /* EventDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB65D04204DBE150082817D /* EventDescriptionViewController.swift */; };
 		9EC272E11FCE7FA000E511A8 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC272E01FCE7FA000E511A8 /* PhotoVC.swift */; };
 		9EC272E21FCE7FA000E511A8 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC272E01FCE7FA000E511A8 /* PhotoVC.swift */; };
 		9EC272E31FCE7FA000E511A8 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC272E01FCE7FA000E511A8 /* PhotoVC.swift */; };
@@ -152,6 +155,7 @@
 		9EA51FFA1FC74041004D20E0 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRViewController.swift; path = pmmx/Utils/QRViewController.swift; sourceTree = SOURCE_ROOT; };
 		9EAA695B1FE48A2400174C8F /* SwipeCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardViewController.swift; sourceTree = "<group>"; };
 		9EAACCF02024E0BE00B51C87 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		9EB65D04204DBE150082817D /* EventDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDescriptionViewController.swift; sourceTree = "<group>"; };
 		9EC272E01FCE7FA000E511A8 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		9EC39BD7201802F60084D779 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		9EC39BDB2018DC570084D779 /* NTRMVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTRMVC.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				9EC39BD7201802F60084D779 /* CustomHeaderView.swift */,
 				9EC39BDB2018DC570084D779 /* NTRMVC.swift */,
 				9EC39BDF2018E4080084D779 /* HallazgoViewController.swift */,
+				9EB65D04204DBE150082817D /* EventDescriptionViewController.swift */,
 			);
 			name = Calidad;
 			path = Calendar;
@@ -680,6 +685,7 @@
 				9EC41F021FCC75FF00E6E635 /* CustomCollectionViewCell.swift in Sources */,
 				9E87C8401FB62534002F1422 /* ViewMenuVC.swift in Sources */,
 				9E622B221FB4FB48006143DA /* Login.swift in Sources */,
+				9EB65D05204DBE150082817D /* EventDescriptionViewController.swift in Sources */,
 				9EABF5891FCF839100A054E9 /* CircularSliderVC.swift in Sources */,
 				9EC41F041FCC75FF00E6E635 /* TabBarController.swift in Sources */,
 				9E18ABE4201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */,
@@ -717,6 +723,7 @@
 				9EABF58C1FD0893500A054E9 /* LineLeadViewController.swift in Sources */,
 				9EB2825F1FDF00700032C435 /* SummaryViewController.swift in Sources */,
 				9EA2C78F1FE8860400407BFA /* CustomCell.swift in Sources */,
+				9EB65D06204DBE150082817D /* EventDescriptionViewController.swift in Sources */,
 				9EABF5871FCF838E00A054E9 /* CalendarVC.swift in Sources */,
 				9E18ABE5201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */,
 				9EC39BD9201802F60084D779 /* CustomHeaderView.swift in Sources */,
@@ -748,6 +755,7 @@
 				9EABF58D1FD0893600A054E9 /* LineLeadViewController.swift in Sources */,
 				9EB282601FDF00700032C435 /* SummaryViewController.swift in Sources */,
 				9EA2C7901FE8860400407BFA /* CustomCell.swift in Sources */,
+				9EB65D07204DBE150082817D /* EventDescriptionViewController.swift in Sources */,
 				9EABF5881FCF838E00A054E9 /* CalendarVC.swift in Sources */,
 				9E18ABE6201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */,
 				9EC39BDA201802F60084D779 /* CustomHeaderView.swift in Sources */,
