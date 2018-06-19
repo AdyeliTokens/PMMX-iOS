@@ -422,7 +422,7 @@ class DBConections: UIViewController
         }
     }
     
-    func saveBitacoraVentana(IdVentana: Int,completion:@escaping (Int) -> Void )
+    func saveBitacoraVentana(IdVentana: Int, IdRechazo: Int, Comentarios: String, completion:@escaping (Int) -> Void )
     {
         let URL_CONNECT = "http://serverpmi.tr3sco.net/api/BitacoraVentana" as String
         let defaultValues = UserDefaults.standard
@@ -459,7 +459,7 @@ class DBConections: UIViewController
         }
     }
     
-    func saveEvento(Descripcion: String, FechaInicio: String, FechaFin: String,IdCategoria: int,completion:@escaping (Int) -> Void )
+    func saveEvento(Descripcion: String, FechaInicio: String, FechaFin: String,IdCategoria: Int,completion:@escaping (Int) -> Void )
     {
         let URL_CONNECT = "http://serverpmi.tr3sco.net/api/BitacoraVentana" as String
         let defaultValues = UserDefaults.standard
