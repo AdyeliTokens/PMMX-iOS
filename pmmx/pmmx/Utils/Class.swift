@@ -46,7 +46,7 @@ class BussinesUnit
     }
 }
 
-class Eventos
+class Evento
 {
     let Id: Int
     let IdCategoria: Int
@@ -56,7 +56,6 @@ class Eventos
     let Nota: String?
     let Activo: Bool
     
-    
     init(dictionary: [String: Any]) {
         self.Id = (dictionary["Id"] as! Int)
         self.IdCategoria = (dictionary["IdCategoria"] as! Int)
@@ -65,10 +64,6 @@ class Eventos
         self.FechaFin = (dictionary["FechaFin"] as? String)!
         self.Nota = (dictionary["Nota"] as? String)
         self.Activo = (dictionary["Activo"] as? Bool)!
-        
-        
-        //self.FechaInicio = dateFormater(Fecha: self.FechaInicio)
-        //self.FechaFin = dateFormater(Fecha: self.FechaFin)
     }
     
     func dateFormater(Fecha: String) -> String
@@ -94,6 +89,97 @@ class Eventos
     }
 }
 
+class Eventos
+{
+    let Id: Int
+    let IdCategoria: Int
+    let Descripcion: String
+    var FechaInicio: String
+    var FechaFin: String
+    let Nota: String?
+    let Activo: Bool
+    
+    
+    init(dictionary: [String: Any]) {
+        self.Id = (dictionary["Id"] as! Int)
+        self.IdCategoria = (dictionary["IdCategoria"] as! Int)
+        self.Descripcion = (dictionary["Descripcion"] as? String)!
+        self.FechaInicio = (dictionary["FechaInicio"] as? String)!
+        self.FechaFin = (dictionary["FechaFin"] as? String)!
+        self.Nota = (dictionary["Nota"] as? String)
+        self.Activo = (dictionary["Activo"] as? Bool)!
+    }
+    
+    func dateFormater(Fecha: String) -> String
+    {
+        if let theDate = Date(jsonDate: Fecha) {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let myString = formatter.string(from: theDate)
+            return myString
+        }
+        else
+        {
+            let dateFormatter = DateFormatter()
+            let tempLocale = dateFormatter.locale // save locale temporarily
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            let date = dateFormatter.date(from: Fecha)!
+            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+            dateFormatter.locale = tempLocale // reset the locale
+            let myString = dateFormatter.string(from: date)
+            return myString
+        }
+    }
+}
+
+class GembaWalk
+{
+    let Id: Int
+    let Descripcion: String
+    let FechaReporte: String
+    let FechaEstimada: String
+    let Prioridad: Int
+    let ReportadorNombre: String
+    let ResponsableNombre: String
+    let TipoNombre: String
+    let OrigenNombre: String
+    let SubCategoriaNombre: String
+    let StatusNombre: String
+    let Activo: Bool
+    
+    init(dictionary: [String: Any]) {
+        self.Id = (dictionary["Id"] as! Int)
+        self.Descripcion = (dictionary["Descripcion"] as? String)!
+        self.FechaReporte = (dictionary["FechaReporte"] as? String)!
+        self.FechaEstimada = (dictionary["FechaEstimada"] as? String)!
+        self.Prioridad = (dictionary["Prioridad"] as? Int)!
+        self.ReportadorNombre = (dictionary["ReportadorNombre"] as? String)!
+        self.ResponsableNombre = (dictionary["ResponsableNombre"] as? String)!
+        self.TipoNombre = (dictionary["TipoNombre"] as? String)!
+        self.OrigenNombre = (dictionary["OrigenNombre"] as? String)!
+        self.SubCategoriaNombre = (dictionary["SubCategoriaNombre"] as? String)!
+        self.StatusNombre = (dictionary["StatusNombre"] as? String)!
+        self.Activo = (dictionary["Activo"] as? Bool)!
+    }
+}
+
+class GrupoPreguntas {
+    var Id : Int
+    var Nombre : String
+    var DDS : Bool
+    var IdCategoria : Int
+    var Activo : Bool
+    
+    init(dictionary: [String: AnyObject]) {
+        self.Id = (dictionary["Id"] as? Int)!
+        self.Nombre = dictionary["Nombre"] as? String ?? ""
+        self.DDS = (dictionary["Activo"] as? Bool)!
+        self.IdCategoria = (dictionary["IdCategoria"] as? Int)!
+        self.Activo = (dictionary["Activo"] as? Bool)!
+    }
+}
+
 class JustDoIt
 {
     let Id: Int
@@ -110,27 +196,6 @@ class JustDoIt
         self.IdOrigen = (dictionary["IdOrigen"] as? Int)!
         self.Descripcion = (dictionary["Descripcion"] as? String)!
         self.IdResponsable = (dictionary["IdResponsable"] as? Int)!
-        self.Activo = (dictionary["Activo"] as? Bool)!
-    }
-}
-
-class SubCategoria
-{
-    let Id: Int
-    let IdCategoria : Int
-    let IdResponsable : Int
-    let IdGrupo : Int
-    let Nombre: String
-    let NombreCorto: String
-    let Activo: Bool
-    
-    init(dictionary: [String: Any]) {
-        self.Id = (dictionary["Id"] as! Int)
-        self.IdCategoria = (dictionary["IdCategoria"] as? Int)!
-        self.IdGrupo = (dictionary["IdGrupo"] as? Int)!
-        self.IdResponsable = (dictionary["IdResponsable"] as? Int)!
-        self.Nombre = (dictionary["Nombre"] as? String)!
-        self.NombreCorto = (dictionary["NombreCorto"] as? String)!
         self.Activo = (dictionary["Activo"] as? Bool)!
     }
 }
@@ -154,162 +219,18 @@ class Operador
     }
 }
 
-class Pregunta
+class Origen
 {
-    let Id: Int
-    let IdGrupo: Int
-    let Tipo: Int
-    
-    let Interrogante: String
-    let Anexo1: String
-    let Anexo2: String
-    
-    let Activo: Bool
-    
-    init(dictionary: [String: Any]) {
-        self.Id = (dictionary["Id"] as? Int)!
-        self.IdGrupo = (dictionary["IdGrupo"] as? Int)!
-        self.Tipo = (dictionary["Tipo"] as? Int)!
-        
-        self.Interrogante = (dictionary["Interrogante"] as? String)!
-        self.Anexo1 = (dictionary["Anexo1"] as? String)!
-        self.Anexo2 = (dictionary["Anexo2"] as? String)!
-        self.Activo = (dictionary["Activo"] as? Bool)!
-    }
-}
-
-
-class WorkCenterbyHC
-{
-    let Id: Int
-    let IdBussinesUnit: Int
-    let ParosActivos: Int
-    let DefectosActivos: Int
-    
-    let Nombre: String
-    let NombreCorto: String
-    let Activo: Bool
-    
-    let Modulos: String
-    let BussinesUnit: String
-    let Formatos: String
-    
-    init(dictionary: [String: AnyObject])
-    {
-        self.Id = (dictionary["Id"] as? Int)!
-        self.IdBussinesUnit = (dictionary["IdBussinesUnit"] as? Int) ?? 0
-        self.ParosActivos = (dictionary["ParosActivos"] as? Int) ?? 0
-        self.DefectosActivos = (dictionary["DefectosActivos"] as? Int) ?? 0
-        self.Nombre = dictionary["Nombre"] as? String ?? ""
-        self.NombreCorto = dictionary["NombreCorto"] as? String ?? ""
-        self.Activo = (dictionary["Activo"] as? Bool)!
-        self.Modulos = dictionary["Modulos"] as? String ?? ""
-        self.BussinesUnit = dictionary["BussinesUnit"] as? String ?? ""
-        self.Formatos = dictionary["Formatos"] as? String ?? ""
-    }
-    
-}
-
-class WorkCenter
-{
-    let Id: Int
-    let IdBussinesUnit: Int
-    
-    let Nombre: String
-    let NombreCorto: String
-    let Activo: Bool
-    
-    let Modulos: String
-    let BussinesUnit: String
-    let Formatos: String
-    
-    init(dictionary: [String: AnyObject])
-    {
-        self.Id = (dictionary["Id"] as? Int)!
-        self.IdBussinesUnit = (dictionary["IdBussinesUnit"] as? Int) ?? 0
-        self.Nombre = dictionary["Nombre"] as? String ?? ""
-        self.NombreCorto = dictionary["NombreCorto"] as? String ?? ""
-        self.Activo = (dictionary["Activo"] as? Bool)!
-        self.Modulos = dictionary["Modulos"] as? String ?? ""
-        self.BussinesUnit = dictionary["BussinesUnit"] as? String ?? ""
-        self.Formatos = dictionary["Formatos"] as? String ?? ""
-    }
-    
-}
-
-class Respuesta
-{
-    let Activo : Bool
-    let Comentario : String
-    let DescripcionPregunta : String
-    let Fecha : NSString
-    let Id : Int
-    let IdOrigenRespuesta : Int
-    
-    let OrigenRespuesta : NSNull
-    let PorcentajeNo : Int
-    let PorcentajeSi : Int
-    let RespuestaBy : String
-    let Solucion : Bool
-    let TotalNo : Int
-    let TotalSi : Int
-    let TotalSolucion : Int
-    
-    init(dictionary: [String: AnyObject]) {
-        self.Activo = (dictionary["Activo"] as! Bool)
-        self.Comentario = (dictionary["Comentario"] as! String)
-        self.DescripcionPregunta = (dictionary["DescripcionPregunta"] as! String)
-        self.Fecha = (dictionary["Fecha"] as? NSString)!
-        self.Id = (dictionary["Id"] as! Int)
-        self.IdOrigenRespuesta = (dictionary["IdOrigenRespuesta"] as! Int)
-        
-        self.OrigenRespuesta = (dictionary["OrigenRespuesta"] as! NSNull)
-        self.PorcentajeNo = (dictionary["PorcentajeNo"] as! Int)
-        self.PorcentajeSi = (dictionary["PorcentajeSi"] as! Int)
-        self.RespuestaBy = (dictionary["RespuestaBy"] as! String)
-        self.Solucion = (dictionary["Solucion"] as! Bool)
-        self.TotalNo = (dictionary["TotalNo"] as! Int)
-        self.TotalSi = (dictionary["TotalSi"] as! Int)
-        self.TotalSolucion = (dictionary["TotalSolucion"] as! Int)
-    }
-}
-
-class GrupoPreguntas {
-    var Id : Int
-    var Nombre : String
-    var DDS : Bool
-    var IdCategoria : Int
-    var Activo : Bool
-    
-    init(dictionary: [String: AnyObject]) {
-        self.Id = (dictionary["Id"] as? Int)!
-        self.Nombre = dictionary["Nombre"] as? String ?? ""
-        self.DDS = (dictionary["Activo"] as? Bool)!
-        self.IdCategoria = (dictionary["IdCategoria"] as? Int)!
-        self.Activo = (dictionary["Activo"] as? Bool)!
-    }
-}
-
-class PreguntaTurno {
-    
     var Id: Int?
-    var IdDia: Int?
-    var IdOrigen: Int?
-    var IdPregunta: Int?
-    var IdTurno: Int?
-    var Activo: Bool?
+    var IdModulo: Int?
+    var IdWorkCenter: Int?
+    var NombreOrigen: String?
     
-    var Pregunta: [Pregunta]
-    
-    init(Id: Int?, IdDia: Int?, IdOrigen: Int?, IdPregunta: Int?, IdTurno: Int?, Activo: Bool?, Pregunta: Pregunta?)
-    {
-        self.Id = Id
-        self.IdDia = IdDia
-        self.IdOrigen = IdOrigen
-        self.IdPregunta = IdPregunta
-        self.IdTurno = IdTurno
-        self.Activo = Activo
-        self.Pregunta = []
+    init(dictionary: [String: AnyObject]) {
+        self.Id = (dictionary["Id"] as? Int)!
+        self.IdModulo = (dictionary["IdModulo"] as? Int)!
+        self.IdWorkCenter = (dictionary["IdWorkCenter"] as? Int)!
+        self.NombreOrigen = (dictionary["NombreOrigen"] as? String)!
     }
 }
 
@@ -357,17 +278,219 @@ class Persona{
     }
 }
 
-class Origen
-{
+class PreguntaTurno {
+    
     var Id: Int?
-    var IdModulo: Int?
-    var IdWorkCenter: Int?
-    var NombreOrigen: String?
+    var IdDia: Int?
+    var IdOrigen: Int?
+    var IdPregunta: Int?
+    var IdTurno: Int?
+    var Activo: Bool?
+    
+    var Pregunta: [Pregunta]
+    
+    init(Id: Int?, IdDia: Int?, IdOrigen: Int?, IdPregunta: Int?, IdTurno: Int?, Activo: Bool?, Pregunta: Pregunta?)
+    {
+        self.Id = Id
+        self.IdDia = IdDia
+        self.IdOrigen = IdOrigen
+        self.IdPregunta = IdPregunta
+        self.IdTurno = IdTurno
+        self.Activo = Activo
+        self.Pregunta = []
+    }
+}
+
+class Pregunta
+{
+    let Id: Int
+    let IdGrupo: Int
+    let Tipo: Int
+    
+    let Interrogante: String
+    let Anexo1: String
+    let Anexo2: String
+    
+    let Activo: Bool
+    
+    init(dictionary: [String: Any]) {
+        self.Id = (dictionary["Id"] as? Int)!
+        self.IdGrupo = (dictionary["IdGrupo"] as? Int)!
+        self.Tipo = (dictionary["Tipo"] as? Int)!
+        
+        self.Interrogante = (dictionary["Interrogante"] as? String)!
+        self.Anexo1 = (dictionary["Anexo1"] as? String)!
+        self.Anexo2 = (dictionary["Anexo2"] as? String)!
+        self.Activo = (dictionary["Activo"] as? Bool)!
+    }
+}
+
+class Respuesta
+{
+    let Activo : Bool
+    let Comentario : String
+    let DescripcionPregunta : String
+    let Fecha : NSString
+    let Id : Int
+    let IdOrigenRespuesta : Int
+    
+    let OrigenRespuesta : NSNull
+    let PorcentajeNo : Int
+    let PorcentajeSi : Int
+    let RespuestaBy : String
+    let Solucion : Bool
+    let TotalNo : Int
+    let TotalSi : Int
+    let TotalSolucion : Int
     
     init(dictionary: [String: AnyObject]) {
-        self.Id = (dictionary["Id"] as? Int)!
-        self.IdModulo = (dictionary["IdModulo"] as? Int)!
-        self.IdWorkCenter = (dictionary["IdWorkCenter"] as? Int)!
-        self.NombreOrigen = (dictionary["NombreOrigen"] as? String)!
+        self.Activo = (dictionary["Activo"] as! Bool)
+        self.Comentario = (dictionary["Comentario"] as! String)
+        self.DescripcionPregunta = (dictionary["DescripcionPregunta"] as! String)
+        self.Fecha = (dictionary["Fecha"] as? NSString)!
+        self.Id = (dictionary["Id"] as! Int)
+        self.IdOrigenRespuesta = (dictionary["IdOrigenRespuesta"] as! Int)
+        
+        self.OrigenRespuesta = (dictionary["OrigenRespuesta"] as! NSNull)
+        self.PorcentajeNo = (dictionary["PorcentajeNo"] as! Int)
+        self.PorcentajeSi = (dictionary["PorcentajeSi"] as! Int)
+        self.RespuestaBy = (dictionary["RespuestaBy"] as! String)
+        self.Solucion = (dictionary["Solucion"] as! Bool)
+        self.TotalNo = (dictionary["TotalNo"] as! Int)
+        self.TotalSi = (dictionary["TotalSi"] as! Int)
+        self.TotalSolucion = (dictionary["TotalSolucion"] as! Int)
     }
+}
+
+class SubCategoria
+{
+    let Id: Int
+    let IdCategoria : Int
+    let IdResponsable : Int
+    let IdGrupo : Int
+    let Nombre: String
+    let NombreCorto: String
+    let Activo: Bool
+    
+    init(dictionary: [String: Any]) {
+        self.Id = (dictionary["Id"] as! Int)
+        self.IdCategoria = (dictionary["IdCategoria"] as? Int)!
+        self.IdGrupo = (dictionary["IdGrupo"] as? Int)!
+        self.IdResponsable = (dictionary["IdResponsable"] as? Int)!
+        self.Nombre = (dictionary["Nombre"] as? String)!
+        self.NombreCorto = (dictionary["NombreCorto"] as? String)!
+        self.Activo = (dictionary["Activo"] as? Bool)!
+    }
+}
+
+class Ventana
+{
+    let Id: Int
+    let PO: String
+    let Recurso: String
+    let Cantidad: Decimal
+    let NombreCarrier: String
+    let NumeroEconomico:String
+    let NumeroPlaca: String
+    let EconomicoRemolque: String
+    let PlacaRemolque: String
+    let ModeloContenedor: String
+    let ColorContenedor: String
+    let Sellos: String
+    let TipoUnidad: String
+    let Dimension: String
+    let Temperatura: String
+    let Conductor: String
+    let MovilConductor: String
+    let ProcedenciaNombre : String
+    let DestinoNombre : String
+    let ProveedorNombre : String
+    let SubCategoriaNombre : String
+    let CarrierNombre : String
+    let EstatusNombre : String
+    let Activo: Bool
+    
+     init(dictionary: [String: Any]) {
+        self.Id = (dictionary["Id"] as! Int)
+        self.PO = (dictionary["PO"] as! String)
+        self.Recurso = (dictionary["Recurso"] as! String)
+        self.Cantidad = (dictionary["Cantidad"] as! Decimal)
+        self.NombreCarrier = (dictionary["NombreCarrier"] as! String)
+        self.NumeroEconomico = (dictionary["NumeroEconomico"] as! String)
+        self.NumeroPlaca = (dictionary["NumeroPlaca"] as! String)
+        self.EconomicoRemolque = (dictionary["EconomicoRemolque"] as! String)
+        self.PlacaRemolque = (dictionary["PlacaRemolque"] as! String)
+        self.ModeloContenedor = (dictionary["ModeloContenedor"] as! String)
+        self.ColorContenedor = (dictionary["ColorContenedor"] as! String)
+        self.Sellos = (dictionary["Sellos"] as! String)
+        self.TipoUnidad = (dictionary["TipoUnidad"] as! String)
+        self.Dimension = (dictionary["Dimension"] as! String)
+        self.Temperatura = (dictionary["Temperatura"] as! String)
+        self.Conductor = (dictionary["Conductor"] as! String)
+        self.MovilConductor = (dictionary["MovilConductor"] as! String)
+        self.ProcedenciaNombre = (dictionary["ProcedenciaNombre"] as! String)
+        self.DestinoNombre = (dictionary["ProcedenciaNombre"] as! String)
+        self.ProveedorNombre = (dictionary["ProcedenciaNombre"] as! String)
+        self.SubCategoriaNombre = (dictionary["ProcedenciaNombre"] as! String)
+        self.CarrierNombre = (dictionary["ProcedenciaNombre"] as! String)
+        self.EstatusNombre = (dictionary["ProcedenciaNombre"] as! String)
+        self.Activo = (dictionary["Activo"] as! Bool)
+    }
+}
+
+class WorkCenter
+{
+    let Id: Int
+    let IdBussinesUnit: Int
+    
+    let Nombre: String
+    let NombreCorto: String
+    let Activo: Bool
+    
+    let Modulos: String
+    let BussinesUnit: String
+    let Formatos: String
+    
+    init(dictionary: [String: AnyObject])
+    {
+        self.Id = (dictionary["Id"] as? Int)!
+        self.IdBussinesUnit = (dictionary["IdBussinesUnit"] as? Int) ?? 0
+        self.Nombre = dictionary["Nombre"] as? String ?? ""
+        self.NombreCorto = dictionary["NombreCorto"] as? String ?? ""
+        self.Activo = (dictionary["Activo"] as? Bool)!
+        self.Modulos = dictionary["Modulos"] as? String ?? ""
+        self.BussinesUnit = dictionary["BussinesUnit"] as? String ?? ""
+        self.Formatos = dictionary["Formatos"] as? String ?? ""
+    }
+}
+
+class WorkCenterbyHC
+{
+    let Id: Int
+    let IdBussinesUnit: Int
+    let ParosActivos: Int
+    let DefectosActivos: Int
+    
+    let Nombre: String
+    let NombreCorto: String
+    let Activo: Bool
+    
+    let Modulos: String
+    let BussinesUnit: String
+    let Formatos: String
+    
+    init(dictionary: [String: AnyObject])
+    {
+        self.Id = (dictionary["Id"] as? Int)!
+        self.IdBussinesUnit = (dictionary["IdBussinesUnit"] as? Int) ?? 0
+        self.ParosActivos = (dictionary["ParosActivos"] as? Int) ?? 0
+        self.DefectosActivos = (dictionary["DefectosActivos"] as? Int) ?? 0
+        self.Nombre = dictionary["Nombre"] as? String ?? ""
+        self.NombreCorto = dictionary["NombreCorto"] as? String ?? ""
+        self.Activo = (dictionary["Activo"] as? Bool)!
+        self.Modulos = dictionary["Modulos"] as? String ?? ""
+        self.BussinesUnit = dictionary["BussinesUnit"] as? String ?? ""
+        self.Formatos = dictionary["Formatos"] as? String ?? ""
+    }
+    
 }

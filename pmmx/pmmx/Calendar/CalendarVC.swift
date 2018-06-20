@@ -100,7 +100,13 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             let frontViewController = UINavigationController.init(rootViewController: desController)
             revealViewController().pushFrontViewController(frontViewController, animated: true)
           default:
-                print(self.eventosArray[indexPath.row].IdCategoria)
+            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let desController = mainStoryBoard.instantiateViewController(withIdentifier: "EventDescriptionVC") as! EventDescriptionViewController
+            desController.IdEvento = self.eventosArray[indexPath.row].Id
+            desController.IdCategoria = self.eventosArray[indexPath.row].IdCategoria
+            desController.Descripcion = self.eventosArray[indexPath.row].Descripcion
+            let frontViewController = UINavigationController.init(rootViewController: desController)
+            revealViewController().pushFrontViewController(frontViewController, animated: true)
         }
     }
     

@@ -68,7 +68,6 @@ class LineLeadViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var items: [(icon: String, color: UIColor)] = [ ]
     var scrollView = UIScrollView(frame: UIScreen.main.bounds)
     
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -207,8 +206,8 @@ class LineLeadViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @objc func buttonAction(sender: UIButton!)
     {
         let btnsendtag: UIButton = sender
-        let index = healthChecks.index(where: {$0.Id == btnsendtag.tag})
-        let hc = healthChecks[index!]
+        let index = healthChecks.index(where: {$0.Id == btnsendtag.tag})!
+        let hc = healthChecks[index]
         arrayData.append(hc.Id as AnyObject)
         arrayData.append(hc.Nombre as AnyObject)
         self.showAlertDD(sender)
