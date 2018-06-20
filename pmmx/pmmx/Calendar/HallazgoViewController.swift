@@ -13,7 +13,6 @@ class HallazgoViewController: UIViewController {
     var IdEvento : Int = 0
     var Title : String = ""
     var idGrupo : Int = 0
-    var IdSubCategoria : Int = 0
     var Tipo : Int = 0
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -24,12 +23,10 @@ class HallazgoViewController: UIViewController {
         titleLabel.text = Title
         menuButton.target = revealViewController();
         menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func acondicionadoButtton(_ sender: UIButton) {
@@ -61,6 +58,18 @@ class HallazgoViewController: UIViewController {
         
         let frontViewController = UINavigationController.init(rootViewController: desController)
         revealViewController.pushFrontViewController(frontViewController, animated: true)
+    }
+    
+    @IBAction func backButton(_ sender: UIButton) {
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "NTRMVC") as! NTRMVC
+        desController.IdCategoria = self.IdCategoria
+        desController.IdEvento = self.IdEvento
+        desController.Title = self.Title
+        desController.idGrupo = self.idGrupo
+        
+        let frontViewController = UINavigationController.init(rootViewController: desController)
+        revealViewController().pushFrontViewController(frontViewController, animated: true)
     }
     
 }

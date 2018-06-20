@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		87CA6459F4611D8F03FE29B3 /* Pods_pmmxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D848455F05097A0305713FF /* Pods_pmmxTests.framework */; };
+		9E18ABE4201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E18ABE3201F9A3E00969F8A /* SearchOrigenViewController.swift */; };
+		9E18ABE5201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E18ABE3201F9A3E00969F8A /* SearchOrigenViewController.swift */; };
+		9E18ABE6201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E18ABE3201F9A3E00969F8A /* SearchOrigenViewController.swift */; };
 		9E2AAB761FCE55030026D48F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2AAB751FCE55030026D48F /* SearchViewController.swift */; };
 		9E2AAB771FCE55030026D48F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2AAB751FCE55030026D48F /* SearchViewController.swift */; };
 		9E2AAB781FCE55030026D48F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2AAB751FCE55030026D48F /* SearchViewController.swift */; };
@@ -48,6 +51,9 @@
 		9EAA695C1FE48A2400174C8F /* SwipeCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA695B1FE48A2400174C8F /* SwipeCardViewController.swift */; };
 		9EAA695D1FE48A2400174C8F /* SwipeCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA695B1FE48A2400174C8F /* SwipeCardViewController.swift */; };
 		9EAA695E1FE48A2400174C8F /* SwipeCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA695B1FE48A2400174C8F /* SwipeCardViewController.swift */; };
+		9EAACCF12024E0BE00B51C87 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAACCF02024E0BE00B51C87 /* Helpers.swift */; };
+		9EAACCF22024E0BE00B51C87 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAACCF02024E0BE00B51C87 /* Helpers.swift */; };
+		9EAACCF32024E0BE00B51C87 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAACCF02024E0BE00B51C87 /* Helpers.swift */; };
 		9EABF5861FCF838D00A054E9 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4AB7B51FCF802B0030E12C /* CalendarVC.swift */; };
 		9EABF5871FCF838E00A054E9 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4AB7B51FCF802B0030E12C /* CalendarVC.swift */; };
 		9EABF5881FCF838E00A054E9 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4AB7B51FCF802B0030E12C /* CalendarVC.swift */; };
@@ -60,6 +66,9 @@
 		9EB282601FDF00700032C435 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC41EFA1FCC75FE00E6E635 /* SummaryViewController.swift */; };
 		9EB282611FDF0DD60032C435 /* SurveyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC41EF31FCC75FD00E6E635 /* SurveyVC.swift */; };
 		9EB282621FDF0DD70032C435 /* SurveyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC41EF31FCC75FD00E6E635 /* SurveyVC.swift */; };
+		9EB65D05204DBE150082817D /* EventDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB65D04204DBE150082817D /* EventDescriptionViewController.swift */; };
+		9EB65D06204DBE150082817D /* EventDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB65D04204DBE150082817D /* EventDescriptionViewController.swift */; };
+		9EB65D07204DBE150082817D /* EventDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB65D04204DBE150082817D /* EventDescriptionViewController.swift */; };
 		9EC272E11FCE7FA000E511A8 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC272E01FCE7FA000E511A8 /* PhotoVC.swift */; };
 		9EC272E21FCE7FA000E511A8 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC272E01FCE7FA000E511A8 /* PhotoVC.swift */; };
 		9EC272E31FCE7FA000E511A8 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC272E01FCE7FA000E511A8 /* PhotoVC.swift */; };
@@ -87,6 +96,8 @@
 		9ECB9F681FB6167F006E8E90 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECB9F671FB6167F006E8E90 /* MenuVC.swift */; };
 		9ECB9F691FB6167F006E8E90 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECB9F671FB6167F006E8E90 /* MenuVC.swift */; };
 		9ECB9F6A1FB6167F006E8E90 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECB9F671FB6167F006E8E90 /* MenuVC.swift */; };
+		9ED99015203635D50071A653 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E622B211FB4FB48006143DA /* Login.swift */; };
+		9ED99016203635D60071A653 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E622B211FB4FB48006143DA /* Login.swift */; };
 		C2ACEA7211751FA35F235532 /* Pods_pmmxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A8DE2EC02C044ECC954179 /* Pods_pmmxUITests.framework */; };
 		F7957F7110FC38276921B01B /* Pods_pmmx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5194A680B1A770795297B16A /* Pods_pmmx.framework */; };
 /* End PBXBuildFile section */
@@ -115,6 +126,7 @@
 		8163FC69FDE2DE444D54D986 /* Pods-pmmxTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pmmxTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pmmxTests/Pods-pmmxTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A7B95514B4CCAEFCE5A2DD6 /* Pods-pmmx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pmmx.release.xcconfig"; path = "Pods/Target Support Files/Pods-pmmx/Pods-pmmx.release.xcconfig"; sourceTree = "<group>"; };
 		914CAF89F1B94604C16F80A2 /* Pods-pmmxUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pmmxUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-pmmxUITests/Pods-pmmxUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9E18ABE3201F9A3E00969F8A /* SearchOrigenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchOrigenViewController.swift; sourceTree = "<group>"; };
 		9E2AAB751FCE55030026D48F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9E4291511FBA097E00995862 /* pmmx.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pmmx.entitlements; sourceTree = "<group>"; };
 		9E4291561FBBAF8400995862 /* Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
@@ -142,6 +154,8 @@
 		9EA2C78D1FE8860400407BFA /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		9EA51FFA1FC74041004D20E0 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRViewController.swift; path = pmmx/Utils/QRViewController.swift; sourceTree = SOURCE_ROOT; };
 		9EAA695B1FE48A2400174C8F /* SwipeCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardViewController.swift; sourceTree = "<group>"; };
+		9EAACCF02024E0BE00B51C87 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		9EB65D04204DBE150082817D /* EventDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDescriptionViewController.swift; sourceTree = "<group>"; };
 		9EC272E01FCE7FA000E511A8 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		9EC39BD7201802F60084D779 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		9EC39BDB2018DC570084D779 /* NTRMVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTRMVC.swift; sourceTree = "<group>"; };
@@ -206,6 +220,7 @@
 				9EC39BD7201802F60084D779 /* CustomHeaderView.swift */,
 				9EC39BDB2018DC570084D779 /* NTRMVC.swift */,
 				9EC39BDF2018E4080084D779 /* HallazgoViewController.swift */,
+				9EB65D04204DBE150082817D /* EventDescriptionViewController.swift */,
 			);
 			name = Calidad;
 			path = Calendar;
@@ -317,6 +332,8 @@
 				9E4291561FBBAF8400995862 /* Class.swift */,
 				9E42915E1FBBBDD700995862 /* DBConections.swift */,
 				9E2AAB751FCE55030026D48F /* SearchViewController.swift */,
+				9E18ABE3201F9A3E00969F8A /* SearchOrigenViewController.swift */,
+				9EAACCF02024E0BE00B51C87 /* Helpers.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -668,8 +685,10 @@
 				9EC41F021FCC75FF00E6E635 /* CustomCollectionViewCell.swift in Sources */,
 				9E87C8401FB62534002F1422 /* ViewMenuVC.swift in Sources */,
 				9E622B221FB4FB48006143DA /* Login.swift in Sources */,
+				9EB65D05204DBE150082817D /* EventDescriptionViewController.swift in Sources */,
 				9EABF5891FCF839100A054E9 /* CircularSliderVC.swift in Sources */,
 				9EC41F041FCC75FF00E6E635 /* TabBarController.swift in Sources */,
+				9E18ABE4201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */,
 				9EC39BE02018E4080084D779 /* HallazgoViewController.swift in Sources */,
 				9E4291571FBBAF8400995862 /* Class.swift in Sources */,
 				9EA2C78E1FE8860400407BFA /* CustomCell.swift in Sources */,
@@ -686,6 +705,7 @@
 				9EC41F031FCC75FF00E6E635 /* SummaryViewController.swift in Sources */,
 				9ECB9F661FB61484006E8E90 /* SWRevealViewController.m in Sources */,
 				9EA2C78A1FE883A900407BFA /* CollectionViewController.swift in Sources */,
+				9EAACCF12024E0BE00B51C87 /* Helpers.swift in Sources */,
 				9EC41F001FCC75FF00E6E635 /* WeeklyViewController.swift in Sources */,
 				9EA51FFB1FC74041004D20E0 /* QRViewController.swift in Sources */,
 				9EC41EFD1FCC75FF00E6E635 /* CustomizeTableViewCell.swift in Sources */,
@@ -703,7 +723,9 @@
 				9EABF58C1FD0893500A054E9 /* LineLeadViewController.swift in Sources */,
 				9EB2825F1FDF00700032C435 /* SummaryViewController.swift in Sources */,
 				9EA2C78F1FE8860400407BFA /* CustomCell.swift in Sources */,
+				9EB65D06204DBE150082817D /* EventDescriptionViewController.swift in Sources */,
 				9EABF5871FCF838E00A054E9 /* CalendarVC.swift in Sources */,
+				9E18ABE5201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */,
 				9EC39BD9201802F60084D779 /* CustomHeaderView.swift in Sources */,
 				9E4291581FBBAF8400995862 /* Class.swift in Sources */,
 				9E2AAB771FCE55030026D48F /* SearchViewController.swift in Sources */,
@@ -711,8 +733,10 @@
 				9EA51FFC1FC74041004D20E0 /* QRViewController.swift in Sources */,
 				9EAA695D1FE48A2400174C8F /* SwipeCardViewController.swift in Sources */,
 				9EABF58A1FCF839100A054E9 /* CircularSliderVC.swift in Sources */,
+				9EAACCF22024E0BE00B51C87 /* Helpers.swift in Sources */,
 				9E87C8411FB62534002F1422 /* ViewMenuVC.swift in Sources */,
 				9EA2C78B1FE883A900407BFA /* CollectionViewController.swift in Sources */,
+				9ED99015203635D50071A653 /* Login.swift in Sources */,
 				9E622B381FB4FB48006143DA /* pmmxTests.swift in Sources */,
 				9E87C8451FB6256C002F1422 /* MenuTableViewCell.swift in Sources */,
 				9EB282611FDF0DD60032C435 /* SurveyVC.swift in Sources */,
@@ -731,7 +755,9 @@
 				9EABF58D1FD0893600A054E9 /* LineLeadViewController.swift in Sources */,
 				9EB282601FDF00700032C435 /* SummaryViewController.swift in Sources */,
 				9EA2C7901FE8860400407BFA /* CustomCell.swift in Sources */,
+				9EB65D07204DBE150082817D /* EventDescriptionViewController.swift in Sources */,
 				9EABF5881FCF838E00A054E9 /* CalendarVC.swift in Sources */,
+				9E18ABE6201F9A3E00969F8A /* SearchOrigenViewController.swift in Sources */,
 				9EC39BDA201802F60084D779 /* CustomHeaderView.swift in Sources */,
 				9E4291591FBBAF8400995862 /* Class.swift in Sources */,
 				9E2AAB781FCE55030026D48F /* SearchViewController.swift in Sources */,
@@ -739,8 +765,10 @@
 				9EA51FFD1FC74041004D20E0 /* QRViewController.swift in Sources */,
 				9EAA695C1FE48A2400174C8F /* SwipeCardViewController.swift in Sources */,
 				9EABF58B1FCF839200A054E9 /* CircularSliderVC.swift in Sources */,
+				9EAACCF32024E0BE00B51C87 /* Helpers.swift in Sources */,
 				9E87C8421FB62534002F1422 /* ViewMenuVC.swift in Sources */,
 				9EA2C78C1FE883A900407BFA /* CollectionViewController.swift in Sources */,
+				9ED99016203635D60071A653 /* Login.swift in Sources */,
 				9E622B431FB4FB48006143DA /* pmmxUITests.swift in Sources */,
 				9E87C8461FB6256C002F1422 /* MenuTableViewCell.swift in Sources */,
 				9EB282621FDF0DD70032C435 /* SurveyVC.swift in Sources */,

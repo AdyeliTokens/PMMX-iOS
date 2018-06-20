@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class PhotoVC: UIViewController , UINavigationControllerDelegate, UIImagePickerControllerDelegate,
-    SearchViewControllerDelegate, QRViewControllerDelegate ,UIPopoverPresentationControllerDelegate
+    SearchViewControllerDelegate, SearchOrigenViewControllerDelegate, QRViewControllerDelegate ,UIPopoverPresentationControllerDelegate
 {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -26,8 +26,9 @@ class PhotoVC: UIViewController , UINavigationControllerDelegate, UIImagePickerC
     var IdCategoria: Int = 0
     var IdSubCategoria: Int = 0
     var IdGrupo: Int = 0
-    var Tipo: Int = 0
+    var Tipo: Int = 1
     var Titulo: String? = ""
+    var array: [Pregunta] = [];
     
     var imagePicker = UIImagePickerController()
     private var lastPoint = CGPoint.zero
@@ -223,9 +224,44 @@ class PhotoVC: UIViewController , UINavigationControllerDelegate, UIImagePickerC
     
     
     @IBAction func qrLector(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Do yo want", message: "to scan a QR or open a List?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let OKAction = UIAlertAction(title: "QR", style: .default) { (action:UIAlertAction!) in
+            self.openQR(sender)
+        }
+        alert.addAction(OKAction)
+        
+        let cancelAction = UIAlertAction(title: "Open a List", style: .cancel) { (action:UIAlertAction!) in
+            self.findOrigen(sender)
+        }
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func openQR(_ sender: UIButton)
+    {
         let savingsInformationViewController = storyboard?.instantiateViewController(withIdentifier: "qrVC") as! QRViewController
         
         savingsInformationViewController.delegate = self
+        
+        savingsInformationViewController.modalPresentationStyle = .popover
+        if let popoverController = savingsInformationViewController.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+            popoverController.permittedArrowDirections = .any
+            popoverController.delegate = self
+        }
+        present(savingsInformationViewController, animated: true, completion: nil)
+    }
+    
+    func findOrigen(_ sender: UIButton)
+    {
+        let savingsInformationViewController = storyboard?.instantiateViewController(withIdentifier: "SearchOrigenVC") as! SearchOrigenViewController
+        
+        savingsInformationViewController.delegate = self
+        savingsInformationViewController.Id = IdPersona
+        savingsInformationViewController.IdEntorno = 7
         
         savingsInformationViewController.modalPresentationStyle = .popover
         if let popoverController = savingsInformationViewController.popoverPresentationController {
@@ -311,6 +347,8 @@ class PhotoVC: UIViewController , UINavigationControllerDelegate, UIImagePickerC
             myVC.IdEvento = self.IdEvento
             myVC.Title = Titulo!
             myVC.idGrupo = IdGrupo
+            myVC.array = array
+        
         let frontViewController = UINavigationController.init(rootViewController: myVC)
         revealViewController.pushFrontViewController(frontViewController, animated: true)
     }
@@ -339,6 +377,13 @@ class PhotoVC: UIViewController , UINavigationControllerDelegate, UIImagePickerC
     }
     
     func saveLocation(Id : Int, Text: String)
+    {
+        self.IdOrigen = Id
+        self.text = Text
+        self.location.text = self.text
+    }
+    
+    func saveOrigen(Id : Int, Text: String)
     {
         self.IdOrigen = Id
         self.text = Text

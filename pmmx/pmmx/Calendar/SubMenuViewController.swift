@@ -10,16 +10,6 @@ import UIKit
 import Alamofire
 import CircleMenu
 
-extension UIColor {
-    static func color(displayP3Red: Int, green: Int, blue: Int, alpha: Float) -> UIColor {
-        return UIColor(
-            red: CGFloat(Float(1.0) / Float(255.0) * Float(displayP3Red)),
-            green: CGFloat(Float(1.0) / Float(255.0) * Float(green)),
-            blue: CGFloat(Float(1.0) / Float(255.0) * Float(blue)),
-            alpha: CGFloat(alpha))
-    }
-}
-
 class SubMenuViewController: UIViewController,CircleMenuDelegate {
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,8 +17,9 @@ class SubMenuViewController: UIViewController,CircleMenuDelegate {
     
     var scrollView = UIScrollView(frame: UIScreen.main.bounds)
     var items: [(icon: String, color: UIColor)] = [ ]
-    
+   
     let api = DBConections()
+    let helper = Helpers()
     var subCategoriasArray = [SubCategoria]()
     var IdCategoria : Int = 0;
     var IdEvento: Int = 0;
@@ -54,39 +45,40 @@ class SubMenuViewController: UIViewController,CircleMenuDelegate {
         }
     }
     
+    func addItems()
+    {
+        for i in 0 ..< self.subCategoriasArray.count
+        {
+            self.items.append((icon: "nearby-btn", color: helper.randomColor(seed: self.subCategoriasArray[i].Nombre) ))
+        }
+    }
+    
     func addButtons()
     {
-        self.items =
-            [
-                ("icon_search", UIColor(red:0.19, green:0.57, blue:1, alpha:1)),
-                ("notifications-btn", UIColor(red:0.96, green:0.23, blue:0.21, alpha:1)),
-                ("settings-btn", UIColor(red:1, green:0.76, blue:0, alpha:1)),
-                ("nearby-btn", UIColor(red:0, green:0.62, blue:0.85, alpha:1)),
-                ("nearby-btn", UIColor(red:0.22, green:0.74, blue:0, alpha:1)),
-                ("nearby-btn", UIColor(red:1, green:0.39, blue:0, alpha:1)),
-                ("nearby-btn", UIColor(red:0.19, green:0.57, blue:1, alpha:1)),
-        ]
+        self.addItems()
         
         let button = CircleMenu(
-            frame: CGRect(x: UIScreen.main.bounds.size.width*0.4, y: UIScreen.main.bounds.size.height*0.3, width: 170, height: 170),
+            frame: CGRect(x: UIScreen.main.bounds.size.width*0.4, y: UIScreen.main.bounds.size.height*0.2, width: 80, height: 80),
             normalIcon:"quality",
             selectedIcon:"icon_close",
-            buttonsCount: 6,
+            buttonsCount: self.subCategoriasArray.count,
             duration: 0.5,
-            distance: 300)
+            distance: 150)
         
         button.backgroundColor = UIColor(red:1, green:1, blue:1, alpha:1)
         button.setTitle(".", for: .normal)
         button.delegate = self
         button.layer.cornerRadius = button.frame.size.width / 2.0
+        
         self.scrollView.addSubview(button)
+        button.sendActions(for: .touchUpInside)
     }
     
     func circleMenu(_ circleMenu: CircleMenu, willDisplay button: UIButton, atIndex: Int)
     {
         let hc = subCategoriasArray[atIndex]
         button.backgroundColor = items[atIndex].color
-        button.setTitle(hc.Nombre, for: .normal)
+        button.setTitle(hc.NombreCorto, for: .normal)
         
         let highlightedImage  = UIImage(named: items[atIndex].icon)?.withRenderingMode(.alwaysTemplate)
         button.setImage(highlightedImage, for: .highlighted)
@@ -101,48 +93,26 @@ class SubMenuViewController: UIViewController,CircleMenuDelegate {
         let btnsendtag: UIButton = sender
         let index = subCategoriasArray.index(where: {$0.Id == btnsendtag.tag})
         let hc = subCategoriasArray[index!]
-        self.nextController(IdSubCategoria: hc.Id, Nombre: hc.Nombre)
+        self.nextController(IdSubCategoria: hc.Id, Nombre: hc.Nombre, IdGrupo : hc.IdGrupo)
     }
     
-    func nextController(IdSubCategoria: Int, Nombre: String)
+    func nextController(IdSubCategoria: Int, Nombre: String, IdGrupo: Int)
     {
-        var idGrupo : Int = 0
-        switch  IdSubCategoria{
-        case 8:// WPO
-            idGrupo = 21
-        case 9:// EHS
-            idGrupo = 22
-        case 11:// Limpieza
-            idGrupo = 23
-        case 12:// NTRM
-            idGrupo = 25
-        case 13:// QA
-            idGrupo = 26
-        case 14:// PI
-            idGrupo = 24
-        default:
-            print(IdSubCategoria)
-        }
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "NTRMVC") as! NTRMVC
+        desController.IdCategoria = self.IdCategoria
+        desController.IdEvento = self.IdEvento
+        desController.Title = Nombre
+        desController.idGrupo = IdGrupo
         
-        if(idGrupo != 0)
-        {
-            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let desController = mainStoryBoard.instantiateViewController(withIdentifier: "CollectionVC") as! CollectionViewController
-            desController.IdCategoria = self.IdCategoria
-            desController.IdEvento = self.IdEvento
-            desController.Title = Nombre
-            desController.idGrupo = idGrupo
-            desController.IdSubCategoria = IdSubCategoria
-            
-            let frontViewController = UINavigationController.init(rootViewController: desController)
-            revealViewController().pushFrontViewController(frontViewController, animated: true)
-        }
+        let frontViewController = UINavigationController.init(rootViewController: desController)
+        revealViewController().pushFrontViewController(frontViewController, animated: true)
     }
     
     override func viewDidLayoutSubviews() {
         self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 1000)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

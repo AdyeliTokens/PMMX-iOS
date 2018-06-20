@@ -14,7 +14,7 @@ class Login: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
-    let URL_USER_REGISTER = "http://serverpmi.tr3sco.net/api/Login"
+    let URL_USER_REGISTER = "http://serverpmi.tr3sco.net/api/Account/ExternalLogin"
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
@@ -65,7 +65,8 @@ class Login: UIViewController, UITextViewDelegate {
         let parameters: Parameters=[
             "Email":txtEmail.text!,
             "Password":txtPassword.text!,
-            "Llave": token ?? ""
+            "Llave": token ?? "",
+            "RememberMe": true
         ]
         
         Alamofire.request(URL_USER_REGISTER, method: .post, parameters: parameters)
@@ -89,7 +90,6 @@ class Login: UIViewController, UITextViewDelegate {
                                 self.defaults.set((respuestas?.value(forKey: "UserName") as! String?)!, forKey: "UserName")
                                 self.defaults.set((respuestas?.value(forKey: "Email") as! String?)!, forKey: "Email")
                                 self.defaults.set((respuestas?.value(forKey: "Id") as! Int?)!, forKey: "Id")
-                                self.defaults.set((respuestas?.value(forKey: "Password") as! String?)!, forKey: "Password")
                                 self.defaults.set((respuestas?.value(forKey: "IdEntorno") as! Int?)!, forKey: "IdEntorno")
                                 self.defaults.set((respuestas?.value(forKey: "IdPersona") as! Int?)!, forKey: "IdPersona")
                                 
@@ -116,6 +116,10 @@ class Login: UIViewController, UITextViewDelegate {
                                         break
                                     default:
                                         print("Default")
+                                        if self.defaults.string(forKey: "UserName") != nil
+                                        {
+                                            self.nextController()
+                                        }
                                         break
                                 }
                             }

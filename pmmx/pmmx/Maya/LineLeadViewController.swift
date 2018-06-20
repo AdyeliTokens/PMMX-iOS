@@ -51,6 +51,7 @@ class LineLeadViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var txtWelcome: UILabel!
     
     let api = DBConections()
+    let helper = Helpers()
     var arrayData: [AnyObject] = []
     var healthChecks = [GrupoPreguntas]()
     var workCentersArray = [WorkCenter]()
@@ -66,7 +67,6 @@ class LineLeadViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var IdPersona : Int = 0
     var items: [(icon: String, color: UIColor)] = [ ]
     var scrollView = UIScrollView(frame: UIScreen.main.bounds)
-    
     
     override func viewDidLoad()
     {
@@ -163,34 +163,30 @@ class LineLeadViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         return workCentersArray[row].NombreCorto
     }
     
+    func addItems()
+    {
+        for i in 0 ..< self.healthChecks.count
+        {
+            self.items.append((icon: "nearby-btn", color: helper.randomColor(seed: self.healthChecks[i].Nombre) ))
+        }
+    }
+    
     func addHCButton()
     {
-        self.items =
-            [
-                ("icon_search", UIColor(red:0.19, green:0.57, blue:1, alpha:1)),
-                ("notifications-btn", UIColor(red:0.96, green:0.23, blue:0.21, alpha:1)),
-                ("settings-btn", UIColor(red:1, green:0.76, blue:0, alpha:1)),
-                ("nearby-btn", UIColor(red:0, green:0.62, blue:0.85, alpha:1)),
-                ("nearby-btn", UIColor(red:0.22, green:0.74, blue:0, alpha:1)),
-                ("nearby-btn", UIColor(red:1, green:0.39, blue:0, alpha:1)),
-                
-                ("nearby-btn", UIColor(red:0.19, green:0.57, blue:1, alpha:1)),
-                ("nearby-btn", UIColor(red:1, green:0.76, blue:0, alpha:1)),
-                ("nearby-btn", UIColor(red:0.22, green:0.74, blue:0, alpha:1)),
-                ("nearby-btn", UIColor(red:1, green:0.39, blue:0, alpha:1)),
-        ]
+        self.addItems()
         
         let button = CircleMenu(
             frame: CGRect(x: UIScreen.main.bounds.size.width*0.4, y: UIScreen.main.bounds.size.height*0.2, width: 70, height: 70),
             normalIcon:"play",
             selectedIcon:"icon_close",
-            buttonsCount: 9,
+            buttonsCount: self.healthChecks.count,
             duration: 0.5,
             distance: 140)
         button.backgroundColor = UIColor(red:1, green:1, blue:1, alpha:1)
         button.delegate = self
         button.layer.cornerRadius = button.frame.size.width / 2.0
         self.scrollView.addSubview(button)
+        button.sendActions(for: .touchUpInside)
     }
     
     func circleMenu(_ circleMenu: CircleMenu, willDisplay button: UIButton, atIndex: Int)
@@ -210,8 +206,8 @@ class LineLeadViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @objc func buttonAction(sender: UIButton!)
     {
         let btnsendtag: UIButton = sender
-        let index = healthChecks.index(where: {$0.Id == btnsendtag.tag})
-        let hc = healthChecks[index!]
+        let index = healthChecks.index(where: {$0.Id == btnsendtag.tag})!
+        let hc = healthChecks[index]
         arrayData.append(hc.Id as AnyObject)
         arrayData.append(hc.Nombre as AnyObject)
         self.showAlertDD(sender)
@@ -226,16 +222,6 @@ class LineLeadViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             self.arrayData.append(IdPersona as AnyObject)
             myVC.parameters = arrayData
             navigationController?.pushViewController(myVC, animated: true)
- 
-            /*
-            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let desController = mainStoryBoard.instantiateViewController(withIdentifier: "CollectionVC") as! CollectionViewController
-            desController.IdCategoria = 13
-            desController.IdEvento = 0
-            desController.parameters = self.arrayData
-            let frontViewController = UINavigationController.init(rootViewController: desController)
-            revealViewController().pushFrontViewController(frontViewController, animated: true)
-            */
         }
         else
         {

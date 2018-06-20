@@ -13,9 +13,11 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
-    var eventosArray = [Eventos]()
+    
     let api = DBConections()
+    var IdCategoria : Int = 0
     var somedays : Array = [String]()
+    var eventosArray = [Eventos]()
     
     fileprivate let gregorian: Calendar = Calendar(identifier: .gregorian)
     fileprivate lazy var dateFormatter1: DateFormatter = {
@@ -34,10 +36,41 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         self.tableView.separatorStyle = .none
         
         self.loadData(Dias: -30)
+        self.createFloatingButton()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    var roundButton = UIButton()
+    func createFloatingButton() {
+        self.roundButton = UIButton(type: .custom)
+        self.roundButton.setTitleColor(UIColor.red, for: .normal)
+        self.roundButton.addTarget(self, action: #selector(ButtonClick(_:)), for: UIControlEvents.touchUpInside)
+        //change view to navigationController?.view, if you have a navigationController in this tableview
+        self.navigationController?.view.addSubview(roundButton)
+    }
+    
+    @IBAction func ButtonClick(_ sender: UIButton){
+        print("Add")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        roundButton.layer.cornerRadius = roundButton.layer.frame.size.width/2
+        roundButton.backgroundColor = UIColor.red
+        roundButton.clipsToBounds = true
+        let image = UIImage(named: "add")?.withRenderingMode(.alwaysTemplate)
+        roundButton.setImage(image, for: .normal)
+        roundButton.tintColor = UIColor.white
+        roundButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            roundButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -3),
+            roundButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -53),
+            roundButton.widthAnchor.constraint(equalToConstant: 50),
+            roundButton.heightAnchor.constraint(equalToConstant: 50)])
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,7 +83,7 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         cell?.imageView?.image = UIImage(named: "calendar")
         cell?.textLabel?.text = self.eventosArray[indexPath.row].Descripcion+" "+self.eventosArray[indexPath.row].FechaInicio
         
-        var token = self.eventosArray[indexPath.row].FechaInicio.components(separatedBy: " ")
+        var token = self.eventosArray[indexPath.row].FechaInicio.components(separatedBy: "T")
         self.somedays.append(token[0])
         return cell!
     }
@@ -67,7 +100,13 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             let frontViewController = UINavigationController.init(rootViewController: desController)
             revealViewController().pushFrontViewController(frontViewController, animated: true)
           default:
-                print(self.eventosArray[indexPath.row].IdCategoria)
+            let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let desController = mainStoryBoard.instantiateViewController(withIdentifier: "EventDescriptionVC") as! EventDescriptionViewController
+            desController.IdEvento = self.eventosArray[indexPath.row].Id
+            desController.IdCategoria = self.eventosArray[indexPath.row].IdCategoria
+            desController.Descripcion = self.eventosArray[indexPath.row].Descripcion
+            let frontViewController = UINavigationController.init(rootViewController: desController)
+            revealViewController().pushFrontViewController(frontViewController, animated: true)
         }
     }
     
@@ -83,7 +122,7 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     
     func loadData(Dias: Int)
     {
-        api.getEventos(Dias: Dias){(res) in
+        api.getEventos(Dias: Dias, IdCategoria: IdCategoria){(res) in
             self.eventosArray = res
             self.tableView.reloadData()
         }
@@ -94,7 +133,7 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         formatter.dateFormat = "MM/dd/yyyy"
         let fecha = formatter.string(from: date)
         
-        api.getEventosbyFecha(Fecha: fecha){(res) in
+        api.getEventosbyFecha(Fecha: fecha, IdCategoria: IdCategoria){(res) in
             self.eventosArray = res
             self.tableView.reloadData()
         }
@@ -112,6 +151,13 @@ class CalendarVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         {
             return nil
         }
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desController = mainStoryBoard.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+        let frontViewController = UINavigationController.init(rootViewController: desController)
+        revealViewController().pushFrontViewController(frontViewController, animated: true)
     }
     
 }

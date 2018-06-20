@@ -16,6 +16,15 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     var saveArray = [AnyObject]()
     var array: [Pregunta] = []
     var origenArray: NSMutableArray = []
+    var logoImages: [UIImage] = [UIImage(named: "am.png")!,
+                                 UIImage(named: "am.png")!,
+                                 UIImage(named: "ldr.png")!,
+                                 UIImage(named: "am.png")!,
+                                 UIImage(named: "qt.png")!,
+                                 UIImage(named: "wpi.png")!,
+                                 UIImage(named: "ldr.png")!,
+                                 UIImage(named: "hse.png")!,
+                                 UIImage(named: "pm.png")!]
     
     var indice : Int = 0
     var idMWCR : Int = 0
@@ -96,7 +105,8 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         cell.textLabel?.textColor = UIColor(red: 28/255, green: 87/255, blue: 145/255, alpha: 1)
         cell.textLabel?.text = array[indexPath.row].Interrogante
-        cell.imageView?.image = self.textToImage(drawText: ((parameters[3] as! String)) as NSString, inImage: #imageLiteral(resourceName: "circle"), atPoint: CGPoint(x: 40,y :40))
+        //cell.imageView?.image = self.textToImage(drawText: ((parameters[3] as! String)) as NSString, inImage: logoImages[parameters[2] as! Int], atPoint: CGPoint(x: 40,y :40))
+        cell.imageView?.image = logoImages[(parameters[2] as! Int)-1]
         return cell
     }
     

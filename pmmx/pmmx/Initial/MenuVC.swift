@@ -15,11 +15,8 @@ class MenuVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     var bussinesUnitArray = [BussinesUnit]()
     let api = DBConections()
     
-    @IBOutlet weak var indicadoresButton: UIButton!
-    //@IBOutlet weak var fallasButton: UIButton!
     @IBOutlet weak var gembaButton: UIButton!
     @IBOutlet weak var metrologiaButton: UIButton!
-    //@IBOutlet weak var defectosButton: UIButton!
     @IBOutlet weak var dmsButton: UIButton!
     
     override func viewDidLoad()
@@ -32,11 +29,8 @@ class MenuVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         pickerBU.dataSource = self
         pickerBU.delegate = self
         
-        indicadoresButton.titleEdgeInsets = UIEdgeInsets(top: 120,left: 0,bottom: 0,right: 0)
-        //fallasButton.titleEdgeInsets = UIEdgeInsets(top: 120,left: 0,bottom: 0,right: 0)
         gembaButton.titleEdgeInsets = UIEdgeInsets(top: 120,left: 0,bottom: 0,right: 0)
         metrologiaButton.titleEdgeInsets = UIEdgeInsets(top: 120,left: 0,bottom: 0,right: 0)
-        //defectosButton.titleEdgeInsets = UIEdgeInsets(top: 120,left: 0,bottom: 0,right: 0)
         dmsButton.titleEdgeInsets = UIEdgeInsets(top: 120,left: 0,bottom: 0,right: 0)
         
         
@@ -76,6 +70,7 @@ class MenuVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     @IBAction func gembaButton(_ sender: UIButton) {
         let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let desController = mainStoryBoard.instantiateViewController(withIdentifier: "CalendarVC") as! CalendarVC
+        desController.IdCategoria = 7
         let frontViewController = UINavigationController.init(rootViewController: desController)
         revealViewController().pushFrontViewController(frontViewController, animated: true)
     }
@@ -83,6 +78,7 @@ class MenuVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     @IBAction func metrologiaButton(_ sender: UIButton) {
         let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let desController = mainStoryBoard.instantiateViewController(withIdentifier: "CalendarVC") as! CalendarVC
+        desController.IdCategoria = 10
         let frontViewController = UINavigationController.init(rootViewController: desController)
         revealViewController().pushFrontViewController(frontViewController, animated: true)
     }

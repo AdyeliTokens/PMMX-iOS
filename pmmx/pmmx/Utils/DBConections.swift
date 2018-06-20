@@ -21,7 +21,9 @@ class DBConections: UIViewController
     var nsmutableArray: NSMutableArray = []
     var preguntasArray = [Pregunta]()
     var subCategoriaArray = [SubCategoria]()
-    
+    var origenesArray = [Origen]()
+    var ventanaArray = [Ventana]()
+    var gembaWalksArray = [GembaWalk]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +49,11 @@ class DBConections: UIViewController
         }
     }
     
-    func getEventos(Dias: Int,completion:@escaping (Array<Eventos>) -> Void )
+    func getEventos(Dias: Int, IdCategoria: Int,completion:@escaping (Array<Eventos>) -> Void )
     {
         self.eventosArray.removeAll()
         let defaultValues = UserDefaults.standard
-        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Evento?idResponsable="+String(describing: defaultValues.string(forKey: "IdPersona") ?? "")+"&dias="+String(describing: Dias)+"&activo=true"
+        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Evento?idResponsable="+String(describing: defaultValues.string(forKey: "IdPersona") ?? "")+"&dias="+String(describing: Dias)+"&IdCategoria="+String(describing: IdCategoria)+"&activo=true"
         
         self.eventosArray.removeAll()
         Alamofire.request(URL_CONNECT).responseJSON{ response in
@@ -64,11 +66,11 @@ class DBConections: UIViewController
         }
     }
     
-    func getEventosbyFecha(Fecha: String,completion:@escaping (Array<Eventos>) -> Void )
+    func getEventosbyFecha(Fecha: String,IdCategoria: Int, completion:@escaping (Array<Eventos>) -> Void )
     {
         self.eventosArray.removeAll()
         let defaultValues = UserDefaults.standard
-        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Evento?idResponsable="+String(describing: defaultValues.string(forKey: "IdPersona") ?? "")+"&fecha="+Fecha+"&activo=true"
+        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Evento?idResponsable="+String(describing: defaultValues.string(forKey: "IdPersona") ?? "")+"&IdCategoria="+String(describing: IdCategoria)+"&fecha="+Fecha+"&activo=true"
         
         self.eventosArray.removeAll()
         Alamofire.request(URL_CONNECT).responseJSON{ response in
@@ -100,7 +102,7 @@ class DBConections: UIViewController
     func getWorkCenters(completion:@escaping (Array<WorkCenter>) -> Void )
     {
         self.workCentersArray.removeAll()
-        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/WorkCenter" as String
+        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/WorkCenter?activo=true" as String
             
             Alamofire.request(URL_CONNECT).responseJSON{ response in
                 if let json = response.result.value as? [[String:AnyObject]] {
@@ -133,7 +135,7 @@ class DBConections: UIViewController
     {
         self.respuestaArray.removeAll()
         let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Respuesta?idOrigen="+String(describing: IdOrigen)+"&idMWCR="+String(describing: IdMWCR)+"&idDDS=0&idHC="+String(describing: IdHC)
-        print(URL_CONNECT)
+        
         Alamofire.request(URL_CONNECT).responseJSON{ response in
             if let json = response.result.value as? [[String:AnyObject]]{
                 for obj in json{
@@ -150,7 +152,7 @@ class DBConections: UIViewController
         self.semanasArray.removeAll()
         
         let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Respuesta?idWorkCenter="+String(describing: idWorkCenter as Int)+"&idHC="+String(describing: idHC as Int)+"&Init="+String(describing: Init as Int)+"&Finish="+String(describing: Finish as Int)
-        print(URL_CONNECT)
+       
         Alamofire.request(URL_CONNECT).responseJSON{ response in
             if let json = response.result.value as? [[String:AnyObject]] {
                 for obj in json
@@ -195,10 +197,6 @@ class DBConections: UIViewController
                             let jsonData = result as! NSDictionary
                             completion([jsonData])
                         }
-                        else
-                        {
-                            print("without data")
-                        }
                     }
                     break
                 case .failure(_):
@@ -223,10 +221,6 @@ class DBConections: UIViewController
                     {
                         let jsonData = result as! NSDictionary
                         completion([jsonData])
-                    }
-                    else
-                    {
-                        print("without data")
                     }
                 }
                 break
@@ -254,6 +248,62 @@ class DBConections: UIViewController
         }
     }
     
+    func getOrigenes(completion:@escaping (Array<Origen>) -> Void )
+    {
+        self.origenesArray.removeAll()
+        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Origen"
+        
+        Alamofire.request(URL_CONNECT).responseJSON{ response in
+            if let json = response.result.value as? [[String:AnyObject]] {
+                for obj in json {
+                    self.origenesArray.append(Origen(dictionary: obj))
+                }
+                completion(self.origenesArray)
+            }
+        }
+    }
+    
+    func getEventobyId(Id: Int, completion:@escaping (Array<Eventos>) -> Void )
+    {
+        self.eventosArray.removeAll()
+        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Evento/"+String(describing: Id)
+        
+        Alamofire.request(URL_CONNECT).responseJSON{ response in
+            if let json = response.result.value as? [[String:AnyObject]] {
+                for obj in json {
+                    self.eventosArray.append(Eventos(dictionary: obj))
+                }
+                completion(self.eventosArray)
+            }
+        }
+    }
+    
+    func getVentanabyIdEvento(Id: Int, completion:@escaping (Array<NSDictionary>) -> Void )
+    {
+        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/Ventana?idEvento="+String(describing: Id)
+        
+        Alamofire.request(URL_CONNECT).responseJSON{ response in
+            if let json = response.result.value as? NSDictionary {
+                completion([json])
+            }
+        }
+    }
+    
+    func getGembaWalksbyIdEvento(Id: Int, completion:@escaping (Array<GembaWalk>) -> Void )
+    {
+        self.gembaWalksArray.removeAll()
+        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/GembaWalk?idEvento="+String(describing: Id)
+        
+        Alamofire.request(URL_CONNECT).responseJSON{ response in
+            if let json = response.result.value as? [[String:AnyObject]] {
+                for obj in json {
+                    self.gembaWalksArray.append(GembaWalk(dictionary: obj))
+                }
+                completion(self.gembaWalksArray)
+            }
+        }
+    }
+    
 /* SAVE FUNCTIONS */
     func saveJustDoIt(IdEvento: Int,IdOrigen: Int,Descripcion: String, IdPersona: Int, IdSubCategoria: Int, IdTipo: Int,completion:@escaping (Int) -> Void )
     {
@@ -266,7 +316,7 @@ class DBConections: UIViewController
             "Descripcion": Descripcion,
             "Prioridad": 1,
             "IdResponsable" : IdPersona,
-            "IdSubCategoria" : IdSubCategoria,
+            "IdSubCategoria" : 8,
             "IdTipo" : IdTipo
         ]
         
@@ -335,6 +385,114 @@ class DBConections: UIViewController
             }
         }
         completion(flag)
+    }
+    
+    func saveStatusVentana(IdVentana: Int,completion:@escaping (Int) -> Void )
+    {
+        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/StatusVentana" as String
+        let defaultValues = UserDefaults.standard
+        let parameters: Parameters = [
+            "IdVentana": IdVentana,
+            "IdResponsable" : defaultValues.string(forKey: "IdPersona") ?? ""
+        ]
+        
+        Alamofire.request(URL_CONNECT, method: .post, parameters: parameters).responseJSON{ response in
+            switch(response.result)
+            {
+            case .success(_):
+                if let result = response.result.value
+                {
+                    if(( (result as AnyObject).count ) != nil)
+                    {
+                        let jsonData = result as! NSDictionary
+                        let Id = jsonData.value(forKey: "Id")
+                        completion(Id as! Int)
+                    }
+                    else
+                    {
+                        completion(0)
+                    }
+                }
+                break
+            case .failure(_):
+                guard case let .failure(error) = response.result else { return }
+                print(error)
+                break
+            }
+        }
+    }
+    
+    func saveBitacoraVentana(IdVentana: Int, IdRechazo: Int, Comentarios: String, completion:@escaping (Int) -> Void )
+    {
+        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/BitacoraVentana" as String
+        let defaultValues = UserDefaults.standard
+        let parameters: Parameters = [
+            "IdVentana": IdVentana,
+            "IdResponsable" : defaultValues.string(forKey: "IdPersona") ?? "",
+            "IdRechazo": IdRechazo,
+            "Comentarios": Comentarios
+        ]
+        
+        Alamofire.request(URL_CONNECT, method: .post, parameters: parameters).responseJSON{ response in
+            switch(response.result)
+            {
+            case .success(_):
+                if let result = response.result.value
+                {
+                    if(( (result as AnyObject).count ) != nil)
+                    {
+                        let jsonData = result as! NSDictionary
+                        let Id = jsonData.value(forKey: "Id")
+                        completion(Id as! Int)
+                    }
+                    else
+                    {
+                        completion(0)
+                    }
+                }
+                break
+            case .failure(_):
+                guard case let .failure(error) = response.result else { return }
+                print(error)
+                break
+            }
+        }
+    }
+    
+    func saveEvento(Descripcion: String, FechaInicio: String, FechaFin: String,IdCategoria: Int,completion:@escaping (Int) -> Void )
+    {
+        let URL_CONNECT = "http://serverpmi.tr3sco.net/api/BitacoraVentana" as String
+        let defaultValues = UserDefaults.standard
+        let parameters: Parameters = [
+            "Descripcion": Descripcion,
+            "IdAsignador" : defaultValues.string(forKey: "IdAsignador") ?? "",
+            "IdCategoria" : IdCategoria
+        ]
+        
+        Alamofire.request(URL_CONNECT, method: .post, parameters: parameters).responseJSON{ response in
+            switch(response.result)
+            {
+            case .success(_):
+                if let result = response.result.value
+                {
+                    if(( (result as AnyObject).count ) != nil)
+                    {
+                        let jsonData = result as! NSDictionary
+                        let Id = jsonData.value(forKey: "Id")
+                        completion(Id as! Int)
+                    }
+                    else
+                    {
+                        completion(0)
+                    }
+                }
+                break
+            case .failure(_):
+                guard case let .failure(error) = response.result else { return }
+                print(error)
+                break
+            }
+        }
     }
     
 }
